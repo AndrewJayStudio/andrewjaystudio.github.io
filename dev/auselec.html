@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" />
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+	<title>Order Form</title>
+	<link rel="stylesheet" href="css/auselec.css">
+</head>
+
+<body id='body'>
+
+	<div class="display-screen">
+		<div class="display-order">
+			<form onsubmit="submitForm(event)">
+				<input name="data" type="text">
+				<button type="submit">test</button>
+				<canvas id="sign"></canvas>
+			</form>
+		</div>
+	</div>
+
+	<div class="display-print"></div>
+
+	<script src="https://cdn.jsdelivr.net/npm/signature_pad@2.3.2/dist/signature_pad.min.js"></script>
+	<script>
+
+		window.onload = () => {
+			NodeList.prototype.forEach = Array.prototype.forEach;
+			canvas = document.getElementById('sign');
+			signaturePad = new SignaturePad(canvas);
+		}
+
+		function getFile() {
+			try {
+				logger('ran');
+				data = document.getElementById('data');
+				logger(data.value);
+				data = data.value.split('');
+				logger(data);
+				data = data.map((letter) => {
+					return letter.charCodeAt(0);
+				});
+				logger(data);
+				data = data.join(' ');
+				logger(data);
+				a = window.btoa(data);
+				logger(a);
+				document.body.innerHTML = '';
+				document.body.innerText = 'AustinElectric/' + a;
+			}
+			catch (err) {
+				logger(err);
+			}
+		}
+
+		function submitForm(event) {
+			event.preventDefault();
+			event.target.childNodes.forEach((cur) => {
+				try {
+					if (!form_data) {
+						form_data = {};
+					}
+				}
+				catch (e) {
+					form_data = {};
+				}
+				if (cur.name) {
+					form_data[cur.name] = cur.value;
+				}
+			});
+			console.log(form_data);
+		}
+
+		function logger(log) {
+			log = JSON.stringify(log);
+			div = document.createElement('div');
+			div.innerText = log;
+			document.body.appendChild(div);
+		}
+
+	</script>
+
+</body>
+
+</html>
