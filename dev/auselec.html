@@ -15,11 +15,12 @@
 
 	<div class="display-screen">
 		<div class="display-order">
-			<div class="font">yellow Austin Electric, Inc.</div>
+			<div class="font">Austin Electric, Inc.</div>
 			<form onsubmit="submitForm(event)">
 				<input name="data" type="text">
 				<button type="submit">test</button>
 				<canvas id="sign"></canvas>
+				<button onclick="_toggleFullScreen()">Fullscreen</button>
 			</form>
 		</div>
 	</div>
@@ -30,6 +31,7 @@
 	<script>
 
 		window.onload = () => {
+		  console.log('ran');
 			NodeList.prototype.forEach = Array.prototype.forEach;
 			canvas = document.getElementById('sign');
 			signaturePad = new SignaturePad(canvas);
@@ -82,6 +84,35 @@
 			div.innerText = log;
 			document.body.appendChild(div);
 		}
+		
+		function _toggleFullScreen() {
+		if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement) {
+		if (document.cancelFullScreen) {
+		document.cancelFullScreen();
+		} else {
+		if (document.mozCancelFullScreen) {
+		document.mozCancelFullScreen();
+		} else {
+		if (document.webkitCancelFullScreen) {
+		document.webkitCancelFullScreen();
+		}
+		}
+		}
+		} else {
+		const _element = document.documentElement;
+		if (_element.requestFullscreen) {
+		_element.requestFullscreen();
+		} else {
+		if (_element.mozRequestFullScreen) {
+		_element.mozRequestFullScreen();
+		} else {
+		if (_element.webkitRequestFullscreen) {
+		_element.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+		}
+		}
+		}
+		}
+		};
 
 	</script>
 
