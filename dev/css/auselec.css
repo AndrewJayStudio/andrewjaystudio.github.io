@@ -90,15 +90,8 @@ a {
 	display: none;
 }
 
-body {
-	background: #e6ebff;
-}
-
 .display-screen {
-	max-width: 70vh;
-	margin: 0 auto;
 	background: white;
-	min-height: 100vh;
 }
 
 div.font {
