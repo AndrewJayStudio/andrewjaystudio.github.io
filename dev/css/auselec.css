@@ -100,3 +100,10 @@ body {
 	background: white;
 	min-height: 100vh;
 }
+
+div.font {
+	padding: 30px;
+	font-size: 60px;
+	font-family: 'Crimson Text', serif;
+	font-style: oblique;
+}
