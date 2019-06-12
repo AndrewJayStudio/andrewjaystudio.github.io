@@ -63,7 +63,7 @@
 	  document.addEventListener(G.visibilityChange, handleVisibilityChange, false);
 	  
 	  function handleVisibilityChange() {
-	    if(document[G.hidden]) {
+	    if(!document[G.hidden]) {
 	      location.reload();
 	    }
 	  }
