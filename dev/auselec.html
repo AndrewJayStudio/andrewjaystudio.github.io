@@ -40,7 +40,8 @@
 	<script>
 	
 	  function _exit() {
-	    setTimeout(window.close, 500);
+	    logger('self');
+	    self.close();
 	  }
 
 		window.onload = () => {
