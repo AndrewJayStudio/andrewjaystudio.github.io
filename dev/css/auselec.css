@@ -94,6 +94,40 @@ a {
 	background: white;
 }
 
+#display-load {
+	background: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	width: 100vw;
+	height: 100vh;
+}
+
+.load-box {
+	width: 95%;
+	max-width: 800px;
+	max-height: 800px;
+}
+
+.load-remove {
+	animation-name: load-fade;
+	animation-duration: 1s;
+	animation-fill-mode: both;
+}
+
+@keyframes load-fade {
+	0% {opacity: 1;}
+	99% {
+		opacity: 0;
+		top: initial;
+	}
+	100% {
+		opacity: 0;
+		top: 500vh;
+	}
+}
+
 div.font {
 	padding: 30px;
 	font-size: 60px;
