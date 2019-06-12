@@ -33,6 +33,7 @@
 	<script>
 
 		window.onload = () => {
+		  logger(navigator.standalone);
 		  console.log('ran');
 			NodeList.prototype.forEach = Array.prototype.forEach;
 			canvas = document.getElementById('sign');
