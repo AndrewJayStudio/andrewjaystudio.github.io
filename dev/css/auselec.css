@@ -94,6 +94,41 @@ a {
 	background: white;
 }
 
+#display-install {
+	display: none;
+	background: rgba(0, 0, 0, 0.3);
+	position: fixed;
+	width: 100vw;
+	height: 100vh;
+	z-index: 1;
+}
+
+.install-content {
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+	font-weight: 300;
+	-webkit-font-smoothing: antialiased;
+	color: white;
+	width: 95%;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	height: 100%;
+	justify-content: space-around;
+}
+
+.install-dialog {
+	font-size: 18px;
+	line-height: 1.5;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.install-text {
+	display: flex;
+}
+
 #display-load {
 	background: white;
 	display: flex;
