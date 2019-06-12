@@ -5,7 +5,13 @@
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" />
 	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+	
+	<!--Safari Web App-->
+	
 	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="default">
+	<meta name="apple-mobile-web-app-title" content="Order Form">
+	
 	<meta name="mobile-web-app-capable" content="yes">
 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 	<title>Order Form</title>
@@ -13,10 +19,12 @@
 	<link href="https://fonts.googleapis.com/css?family=Crimson+Text:700&display=swap" rel="stylesheet">
 </head>
 
-<body id='body'>
+<body id='body' ontouchstart="">
 
 	<div class="display-screen">
 		<div class="display-order">
+		  <button onclick="window.close()">Close</button>
+		  <button onclick="location.reload()">Reload</button>
 			<div class="font">Austin Electric, Inc.</div>
 			<form onsubmit="submitForm(event)">
 				<input name="data" type="text">
