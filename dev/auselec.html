@@ -22,7 +22,6 @@
 				<input name="data" type="text">
 				<button type="submit">test</button>
 				<canvas id="sign"></canvas>
-				<button onclick="_toggleFullScreen()">Fullscreen</button>
 			</form>
 		</div>
 	</div>
@@ -87,36 +86,6 @@
 			div.innerText = log;
 			document.body.appendChild(div);
 		}
-		
-		function _toggleFullScreen() {
-		  console.log('full')
-		if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement) {
-		if (document.cancelFullScreen) {
-		document.cancelFullScreen();
-		} else {
-		if (document.mozCancelFullScreen) {
-		document.mozCancelFullScreen();
-		} else {
-		if (document.webkitCancelFullScreen) {
-		document.webkitCancelFullScreen();
-		}
-		}
-		}
-		} else {
-		const _element = document.documentElement;
-		if (_element.requestFullscreen) {
-		_element.requestFullscreen();
-		} else {
-		if (_element.mozRequestFullScreen) {
-		_element.mozRequestFullScreen();
-		} else {
-		if (_element.webkitRequestFullscreen) {
-		_element.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
-		}
-		}
-		}
-		}
-		};
 
 	</script>
 
