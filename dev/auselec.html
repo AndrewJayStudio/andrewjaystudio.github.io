@@ -5,6 +5,8 @@
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" />
 	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="mobile-web-app-capable" content="yes">
 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 	<title>Order Form</title>
 	<link rel="stylesheet" href="css/auselec.css">
@@ -86,6 +88,7 @@
 		}
 		
 		function _toggleFullScreen() {
+		  console.log('full')
 		if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement) {
 		if (document.cancelFullScreen) {
 		document.cancelFullScreen();
