@@ -60,13 +60,11 @@
 	  G.hidden = "webkitHidden";
 	  G.visibilityChange = "webkitvisibilitychange";
 	  }
-	  document.addEventListener(G.visibilityChange, handleVisibilityChange, false);
-	  
-	  function handleVisibilityChange() {
+	  document.addEventListener(G.visibilityChange, () => {
 	    if(!document[G.hidden]) {
-	      location.reload();
+	    location.reload();
 	    }
-	  }
+	  }, false);
 
 		function _exit() {
 			logger('self');
