@@ -5,13 +5,15 @@
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" />
 	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
-	
+
 	<!--Safari Web App-->
-	
+
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<meta name="apple-mobile-web-app-status-bar-style" content="default">
 	<meta name="apple-mobile-web-app-title" content="Order Form">
-	
+	<link rel="apple-touch-icon" href="single-page-icon.png">
+	<link rel="apple-touch-startup-image" href="launch.png">
+
 	<meta name="mobile-web-app-capable" content="yes">
 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 	<title>Order Form</title>
@@ -23,8 +25,8 @@
 
 	<div class="display-screen">
 		<div class="display-order">
-		  <button onclick="_exit()">Close</button>
-		  <button onclick="location.reload()">Reload</button>
+			<button onclick="_exit()">Close</button>
+			<button onclick="location.reload()">Reload</button>
 			<div class="font">Austin Electric, Inc.</div>
 			<form onsubmit="submitForm(event)">
 				<input name="data" type="text">
@@ -38,16 +40,16 @@
 
 	<script src="https://cdn.jsdelivr.net/npm/signature_pad@2.3.2/dist/signature_pad.min.js"></script>
 	<script>
-	
-	  function _exit() {
-	    logger('self');
-	    self.close();
-	  }
+
+		function _exit() {
+			logger('self');
+			self.close();
+		}
 
 		window.onload = () => {
-		  logger(navigator.standalone);
-		  logger(location);
-		  console.log('ran');
+			logger(navigator.standalone);
+			logger(location);
+			console.log('ran');
 			NodeList.prototype.forEach = Array.prototype.forEach;
 			canvas = document.getElementById('sign');
 			signaturePad = new SignaturePad(canvas);
