@@ -23,7 +23,7 @@
 
 	<div class="display-screen">
 		<div class="display-order">
-		  <button onclick="window.close()">Close</button>
+		  <button onclick="_exit()">Close</button>
 		  <button onclick="location.reload()">Reload</button>
 			<div class="font">Austin Electric, Inc.</div>
 			<form onsubmit="submitForm(event)">
@@ -38,6 +38,10 @@
 
 	<script src="https://cdn.jsdelivr.net/npm/signature_pad@2.3.2/dist/signature_pad.min.js"></script>
 	<script>
+	
+	  function _exit() {
+	    window.addEventListener("load", window.close);
+	  }
 
 		window.onload = () => {
 		  logger(navigator.standalone);
