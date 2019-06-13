@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html manifest="auselec-cache.appcache">
+<html>
 
 <head>
 	<meta charset="utf-8" />
@@ -96,7 +96,6 @@
 			NodeList.prototype.forEach = Array.prototype.forEach;
 			canvas = document.getElementById('sign');
 			signaturePad = new SignaturePad(canvas);
-			cacheTests();
 		}
 
 		function getFile() {
@@ -145,18 +144,6 @@
 			div = document.createElement('div');
 			div.innerText = log;
 			document.body.appendChild(div);
-		}
-		
-		function cacheTests() {
-		  _cache = window.applicationCache;
-		  _cache.addEventListener('uncached', logger('uncached'));
-		  _cache.addEventListener('idle', logger('idle'));
-		  _cache.addEventListener('checking', logger('checking'));
-		  _cache.addEventListener('downloading', logger('downloading'));
-		  _cache.addEventListener('updateready', logger('updateready'));
-		  _cache.addEventListener('obsolete', logger('obsolete'));
-		  _cache.addEventListener('progress', logger('progress'));
-		  _cache.addEventListener('error', logger('error'));
 		}
 
 	</script>
