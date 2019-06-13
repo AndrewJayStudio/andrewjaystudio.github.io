@@ -65,6 +65,24 @@
 			'hidden': '',
 			'visibilitychange': ''
 		}
+		
+		if ('serviceWorker' in navigator) {
+		window.addEventListener('load', function() {
+		navigator.serviceWorker.register('/auselec-sw.js').then(function(registration) {
+		// Registration was successful
+		logger('SW Worked');
+		console.log('ServiceWorker registration successful with scope: ', registration.scope);
+		}, function(err) {
+		// registration failed :(
+		logger('SW err');
+		console.log('ServiceWorker registration failed: ', err);
+		});
+		});
+		}
+		else {
+		  logger('No SW');
+		}
+		
 		if (typeof document.hidden !== "undefined") { // Opera 12.10 and Firefox 18 and later support
 			G.hidden = "hidden";
 			G.visibilityChange = "visibilitychange";
