@@ -1,8 +1,6 @@
 var CACHE_NAME = 'auselec-cache-v1';
 var urlsToCache = [
-  '/',
-  '/css/auselec.css',
-  '/images/auselec-icon.svg'
+
 ];
 
 self.addEventListener('install', function(event) {
