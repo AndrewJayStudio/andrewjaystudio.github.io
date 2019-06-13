@@ -68,7 +68,7 @@
 		
 		if ('serviceWorker' in navigator) {
 		window.addEventListener('load', function() {
-		navigator.serviceWorker.register('/auselec-sw.js').then(function(registration) {
+		navigator.serviceWorker.register('/dev/auselec-sw.js').then(function(registration) {
 		// Registration was successful
 		logger('SW Worked');
 		console.log('ServiceWorker registration successful with scope: ', registration.scope);
@@ -105,6 +105,7 @@
 		}
 
 		window.onload = () => {
+		  logger('Snapshot 1vy');
 		// 	document.getElementById('display-install').style.display = 'block';
 			document.getElementById('display-load').children[0].style['-webkit-filter'] = 'blur(10px)';
 			// document.getElementById('display-load').classList.add('load-remove');
