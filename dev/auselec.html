@@ -17,7 +17,6 @@
 	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 	<title>Order Form</title>
 	<link rel="stylesheet" href="css/auselec.css">
-	<link href="https://fonts.googleapis.com/css?family=Crimson+Text:700&display=swap" rel="stylesheet">
 </head>
 
 <body id='body' ontouchstart="">
@@ -65,24 +64,24 @@
 			'hidden': '',
 			'visibilitychange': ''
 		}
-		
+
 		if ('serviceWorker' in navigator) {
-		window.addEventListener('load', function() {
-		navigator.serviceWorker.register('/dev/auselec-sw.js').then(function(registration) {
-		// Registration was successful
-		logger('SW Worked');
-		console.log('ServiceWorker registration successful with scope: ', registration.scope);
-		}, function(err) {
-		// registration failed :(
-		logger('SW err');
-		console.log('ServiceWorker registration failed: ', err);
-		});
-		});
+			window.addEventListener('load', function () {
+				navigator.serviceWorker.register('/dev/auselec-sw.js').then(function (registration) {
+					// Registration was successful
+					logger('SW Worked');
+					console.log('ServiceWorker registration successful with scope: ', registration.scope);
+				}, function (err) {
+					// registration failed :(
+					logger('SW err');
+					console.log('ServiceWorker registration failed: ', err);
+				});
+			});
 		}
 		else {
-		  logger('No SW');
+			logger('No SW');
 		}
-		
+
 		if (typeof document.hidden !== "undefined") { // Opera 12.10 and Firefox 18 and later support
 			G.hidden = "hidden";
 			G.visibilityChange = "visibilitychange";
@@ -105,8 +104,8 @@
 		}
 
 		window.onload = () => {
-		  logger('Snapshot 1vy.2');
-		// 	document.getElementById('display-install').style.display = 'block';
+			logger('Snapshot 1vz');
+			// 	document.getElementById('display-install').style.display = 'block';
 			document.getElementById('display-load').children[0].style['-webkit-filter'] = 'blur(10px)';
 			// document.getElementById('display-load').classList.add('load-remove');
 			logger(navigator.standalone);
