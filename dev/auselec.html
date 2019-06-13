@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html manifest="auselec-cache.appcache">
 
 <head>
 	<meta charset="utf-8" />
@@ -87,7 +87,7 @@
 		}
 
 		window.onload = () => {
-			document.getElementById('display-install').style.display = 'block';
+		// 	document.getElementById('display-install').style.display = 'block';
 			document.getElementById('display-load').children[0].style['-webkit-filter'] = 'blur(10px)';
 			// document.getElementById('display-load').classList.add('load-remove');
 			logger(navigator.standalone);
@@ -96,6 +96,7 @@
 			NodeList.prototype.forEach = Array.prototype.forEach;
 			canvas = document.getElementById('sign');
 			signaturePad = new SignaturePad(canvas);
+			cacheTests();
 		}
 
 		function getFile() {
@@ -144,6 +145,18 @@
 			div = document.createElement('div');
 			div.innerText = log;
 			document.body.appendChild(div);
+		}
+		
+		function cacheTests() {
+		  _cache = window.applicationCache;
+		  _cache.addEventListener('uncached', logger('uncached'));
+		  _cache.addEventListener('idle', logger('idle'));
+		  _cache.addEventListener('checking', logger('checking'));
+		  _cache.addEventListener('downloading', logger('downloading'));
+		  _cache.addEventListener('updateready', logger('updateready'));
+		  _cache.addEventListener('obsolete', logger('obsolete'));
+		  _cache.addEventListener('progress', logger('progress'));
+		  _cache.addEventListener('error', logger('error'));
 		}
 
 	</script>
