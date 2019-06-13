@@ -1,6 +1,9 @@
-var CACHE_NAME = 'auselec-cache-v1';
+var CACHE_NAME = 'auselec-cache-v0-s1';
 var urlsToCache = [
-
+	'/dev/auselec',
+	'/dev/css/auselec.css',
+	'/dev/css/fonts/crimson-text.woff2',
+	'/dev/images/austin-icon.svg'
 ];
 
 self.addEventListener('install', function (event) {
@@ -48,19 +51,19 @@ self.addEventListener('fetch', function (event) {
 	);
 });
 
-// self.addEventListener('activate', function(event) {
+self.addEventListener('activate', function(event) {
 
-//   var cacheWhitelist = [CACHE_NAME];
+  var cacheWhitelist = [CACHE_NAME];
 
-//   event.waitUntil(
-//     caches.keys().then(function(cacheNames) {
-//       return Promise.all(
-//         cacheNames.map(function(cacheName) {
-//           if (cacheWhitelist.indexOf(cacheName) === -1) {
-//             return caches.delete(cacheName);
-//           }
-//         })
-//       );
-//     })
-//   );
-// });
+  event.waitUntil(
+    caches.keys().then(function(cacheNames) {
+      return Promise.all(
+        cacheNames.map(function(cacheName) {
+          if (cacheWhitelist.indexOf(cacheName) === -1) {
+            return caches.delete(cacheName);
+          }
+        })
+      );
+    })
+  );
+});
