@@ -24,8 +24,10 @@
 	<div id="display-install">
 		<div class="install-content">
 			<div class="install-head">
-				<div class="install-img"></div>
-				<div class="install-title"></div>
+				<div class="install-img">
+				  <img src="images/austin-outline.svg">
+				</div>
+				<div class="install-title">Order Form</div>
 			</div>
 			<div class="install-dialog">
 				<div class="install-text">To install, tap<div>um?</div>and choose</div><br>Add to Home Screen
@@ -105,7 +107,7 @@
 
 		window.onload = () => {
 			logger('Snapshot 1vz.6 test');
-			// 	document.getElementById('display-install').style.display = 'block';
+				document.getElementById('display-install').style.display = 'block';
 			document.getElementById('display-load').children[0].style['-webkit-filter'] = 'blur(10px)';
 			// document.getElementById('display-load').classList.add('load-remove');
 			logger(navigator.standalone);
