@@ -112,6 +112,17 @@ a {
 	z-index: 1;
 }
 
+.install-head {
+	font-size: 24px;
+	width: 75%;
+	max-width: 600px;
+}
+
+.install-title {
+	margin: 0 auto;
+	width: fit-content;
+}
+
 .install-content {
 	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 	font-weight: 300;
@@ -136,6 +147,30 @@ a {
 
 .install-text {
 	display: flex;
+	align-items: flex-end;
+}
+
+.install-icon-addtohome {
+	width: 40px;
+	height: 40px;
+	background: url(../images/mobile-sprite.png) 0 0;
+	background-size: 100%;
+}
+
+.install-pointer {
+	width: 40px;
+	height: 40px;
+	background: url(../images/mobile-sprite.png) 0 -42px;
+	background-size: 100%;
+	animation-name: install-pointer;
+	animation-duration: 1450ms;
+	animation-iteration-count: infinite;
+	animation-timing-function: ease;
+}
+
+@keyframes install-pointer {
+	25% {transform: translate(0, 100%)}
+	100% {transform: translate(0, 0)}
 }
 
 #display-load {
