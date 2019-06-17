@@ -66,23 +66,6 @@
 			'visibilitychange': ''
 		}
 
-		// if ('serviceWorker' in navigator) {
-		// 	window.addEventListener('load', () => {
-		// 		navigator.serviceWorker.register('/dev/auselec-sw.js').then((registration) => {
-		// 			// Registration was successful
-		// 			logger('SW Worked');
-		// 			console.log('ServiceWorker registration successful with scope: ', registration.scope);
-		// 		}, (err) => {
-		// 			// registration failed :(
-		// 			logger('SW err');
-		// 			console.log('ServiceWorker registration failed: ', err);
-		// 		});
-		// 	});
-		// }
-		// else {
-		// 	logger('No SW');
-		// }
-
 		if (typeof document.hidden !== "undefined") { // Opera 12.10 and Firefox 18 and later support
 			G.hidden = "hidden";
 			G.visibilityChange = "visibilitychange";
@@ -101,21 +84,82 @@
 
 		window.onload = () => {
 			logger('Snapshot 1vz.6 test');
-			if (navigator.standalone && navigator.onLine || true) {
+			if (navigator.standalone) {
+				if (typeof document.hidden !== "undefined") { // Opera 12.10 and Firefox 18 and later support
+					G.hidden = "hidden";
+					G.visibilityChange = "visibilitychange";
+				} else if (typeof document.msHidden !== "undefined") {
+					G.hidden = "msHidden";
+					G.visibilityChange = "msvisibilitychange";
+				} else if (typeof document.webkitHidden !== "undefined") {
+					G.hidden = "webkitHidden";
+					G.visibilityChange = "webkitvisibilitychange";
+				}
+				document.addEventListener(G.visibilityChange, () => {
+					if (!document[G.hidden]) {
+						location.reload();
+					}
+				});
 				BuildApp().then(() => {
 					document.getElementById('display-load').classList.add('load-remove');
 				});
 			}
 			else {
-				document.getElementById('display-install').style.display = 'block';
 				document.getElementById('display-load').children[0].style['-webkit-filter'] = 'blur(10px)';
+				document.getElementById('display-install').style.display = 'block';
+				if (navigator.onLine && isIosSafari()) { }
+				else if (!navigator.onLine) {
+					console.log(navigator.onLine);
+					document.getElementById('display-install').firstElementChild.innerHTML = 'Please connect to the internet for an up-to-date and stable installation.';
+				}
+				else {
+					document.getElementById('display-install').firstElementChild.innerHTML = 'This App may not be compatible for your device.';
+				}
 			}
+
 			logger(navigator.standalone);
 			// logger(location);
 			console.log('ran');
 			NodeList.prototype.forEach = Array.prototype.forEach;
 			canvas = document.getElementById('sign');
 			signaturePad = new SignaturePad(canvas);
+		}
+
+		function BuildApp() {
+			return new Promise((resolve, reject) => {
+				RegisterSW();
+				resolve();
+			});
+		}
+
+		function isIosSafari() {
+			var isTrue = true;
+			nav = window.navigator;
+			['iPhone', 'iPad', 'iPod'].forEach((device) => {
+				isTrue = (isTrue && 'standalone' in nav
+					&& nav.userAgent.indexOf(device) != -1
+					&& nav.userAgent.indexOf('Mac OS') != -1
+					&& nav.userAgent.indexOf('Safari') != -1
+					&& nav.userAgent.indexOf(device) != -1);
+			});
+			return isTrue;
+		}
+
+		function RegisterSW() {
+			if ('serviceWorker' in navigator) {
+				navigator.serviceWorker.register('/dev/auselec-sw.js').then((registration) => {
+					// Registration was successful
+					logger('SW Worked');
+					console.log('ServiceWorker registration successful with scope: ', registration.scope);
+				}, (err) => {
+					// registration failed :(
+					logger('SW err');
+					console.log('ServiceWorker registration failed: ', err);
+				});
+			}
+			else {
+				logger('No SW');
+			}
 		}
 
 		function getFile() {
