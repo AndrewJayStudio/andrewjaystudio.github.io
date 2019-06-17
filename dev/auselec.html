@@ -21,7 +21,10 @@
 
 <body id='body' ontouchstart="">
 
-	<div id="dev"></div>
+	<div id="dev">
+		<button onclick="console.log(event.target.parentNode.style.display='none')">close
+			dev</button>
+	</div>
 
 	<div id="display-install">
 		<div class="install-content">
@@ -85,7 +88,7 @@
 		});
 
 		window.onload = () => {
-			logger('0.1.0-armstrong-6');
+			logger('0.1.0-armstrong-7');
 			if (navigator.standalone) {
 				if (typeof document.hidden !== "undefined") { // Opera 12.10 and Firefox 18 and later support
 					G.hidden = "hidden";
