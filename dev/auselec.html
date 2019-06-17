@@ -85,7 +85,7 @@
 		});
 
 		window.onload = () => {
-			logger('Snapshot 1vz.6 test');
+			logger('0.1.0-armstrong-6');
 			if (navigator.standalone) {
 				if (typeof document.hidden !== "undefined") { // Opera 12.10 and Firefox 18 and later support
 					G.hidden = "hidden";
@@ -137,13 +137,16 @@
 		function isIosSafari() {
 			nav = window.navigator;
 			logger(nav.userAgent);
+			yes = false;
 			['iPhone', 'iPad', 'iPod'].forEach((device) => {
 				isTrue = ('standalone' in nav
 					&& nav.userAgent.indexOf(device) != -1
 					&& nav.userAgent.indexOf('Mac OS') != -1
 					&& nav.userAgent.indexOf('Safari') != -1
 					&& nav.userAgent.indexOf(device) != -1);
-				yes = isTrue ? true : false;
+				if (isTrue) {
+					yes = true;
+				}
 			});
 			logger(yes);
 			return yes;
