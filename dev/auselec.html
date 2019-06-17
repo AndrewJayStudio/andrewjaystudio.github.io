@@ -21,6 +21,8 @@
 
 <body id='body' ontouchstart="">
 
+	<div id="dev"></div>
+
 	<div id="display-install">
 		<div class="install-content">
 			<div class="install-head">
@@ -135,6 +137,7 @@
 		function isIosSafari() {
 			var isTrue = true;
 			nav = window.navigator;
+			logger(nav);
 			['iPhone', 'iPad', 'iPod'].forEach((device) => {
 				isTrue = (isTrue && 'standalone' in nav
 					&& nav.userAgent.indexOf(device) != -1
@@ -142,6 +145,7 @@
 					&& nav.userAgent.indexOf('Safari') != -1
 					&& nav.userAgent.indexOf(device) != -1);
 			});
+			logger(isTrue);
 			return isTrue;
 		}
 
@@ -207,7 +211,7 @@
 			log = JSON.stringify(log);
 			div = document.createElement('div');
 			div.innerText = log;
-			document.body.appendChild(div);
+			document.getElementById('dev').appendChild(div);
 		}
 
 	</script>
