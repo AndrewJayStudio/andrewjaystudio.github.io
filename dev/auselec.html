@@ -135,18 +135,18 @@
 		}
 
 		function isIosSafari() {
-			var isTrue = true;
 			nav = window.navigator;
 			logger(nav.userAgent);
 			['iPhone', 'iPad', 'iPod'].forEach((device) => {
-				isTrue = (isTrue && 'standalone' in nav
+				isTrue = ('standalone' in nav
 					&& nav.userAgent.indexOf(device) != -1
 					&& nav.userAgent.indexOf('Mac OS') != -1
 					&& nav.userAgent.indexOf('Safari') != -1
 					&& nav.userAgent.indexOf(device) != -1);
+				yes = isTrue ? true : false;
 			});
-			logger(isTrue);
-			return isTrue;
+			logger(yes);
+			return yes;
 		}
 
 		function RegisterSW() {
