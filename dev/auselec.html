@@ -137,7 +137,7 @@
 		function isIosSafari() {
 			var isTrue = true;
 			nav = window.navigator;
-			logger(nav);
+			logger(nav.userAgent);
 			['iPhone', 'iPad', 'iPod'].forEach((device) => {
 				isTrue = (isTrue && 'standalone' in nav
 					&& nav.userAgent.indexOf(device) != -1
