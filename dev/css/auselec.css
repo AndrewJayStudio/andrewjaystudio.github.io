@@ -112,17 +112,6 @@ a {
 	z-index: 1;
 }
 
-.install-head {
-	font-size: 24px;
-	width: 75%;
-	max-width: 600px;
-}
-
-.install-title {
-	margin: 0 auto;
-	width: fit-content;
-}
-
 .install-content {
 	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 	font-weight: 300;
@@ -136,6 +125,17 @@ a {
 	height: 75vh;
 	margin-top: 8vh;
 	justify-content: space-around;
+}
+
+.install-head {
+	font-size: 24px;
+	width: 75%;
+	max-width: 600px;
+}
+
+.install-title {
+	margin: 0 auto;
+	width: fit-content;
 }
 
 .install-dialog {

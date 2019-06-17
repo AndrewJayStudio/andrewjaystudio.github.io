@@ -46,7 +46,6 @@
 
 	<div class="display-screen">
 		<div class="display-order">
-			<button onclick="_exit()">Close</button>
 			<button onclick="location.reload()">Reload</button>
 			<div class="font">Austin Electric, Inc.</div>
 			<form onsubmit="submitForm(event)">
@@ -67,22 +66,22 @@
 			'visibilitychange': ''
 		}
 
-		if ('serviceWorker' in navigator) {
-			window.addEventListener('load', function () {
-				navigator.serviceWorker.register('/dev/auselec-sw.js').then(function (registration) {
-					// Registration was successful
-					logger('SW Worked');
-					console.log('ServiceWorker registration successful with scope: ', registration.scope);
-				}, function (err) {
-					// registration failed :(
-					logger('SW err');
-					console.log('ServiceWorker registration failed: ', err);
-				});
-			});
-		}
-		else {
-			logger('No SW');
-		}
+		// if ('serviceWorker' in navigator) {
+		// 	window.addEventListener('load', () => {
+		// 		navigator.serviceWorker.register('/dev/auselec-sw.js').then((registration) => {
+		// 			// Registration was successful
+		// 			logger('SW Worked');
+		// 			console.log('ServiceWorker registration successful with scope: ', registration.scope);
+		// 		}, (err) => {
+		// 			// registration failed :(
+		// 			logger('SW err');
+		// 			console.log('ServiceWorker registration failed: ', err);
+		// 		});
+		// 	});
+		// }
+		// else {
+		// 	logger('No SW');
+		// }
 
 		if (typeof document.hidden !== "undefined") { // Opera 12.10 and Firefox 18 and later support
 			G.hidden = "hidden";
@@ -98,18 +97,19 @@
 			if (!document[G.hidden]) {
 				location.reload();
 			}
-		}, false);
-
-		function _exit() {
-			logger('self');
-			self.close();
-		}
+		});
 
 		window.onload = () => {
 			logger('Snapshot 1vz.6 test');
-			document.getElementById('display-install').style.display = 'block';
-			document.getElementById('display-load').children[0].style['-webkit-filter'] = 'blur(10px)';
-			// document.getElementById('display-load').classList.add('load-remove');
+			if (navigator.standalone && navigator.onLine || true) {
+				BuildApp().then(() => {
+					document.getElementById('display-load').classList.add('load-remove');
+				});
+			}
+			else {
+				document.getElementById('display-install').style.display = 'block';
+				document.getElementById('display-load').children[0].style['-webkit-filter'] = 'blur(10px)';
+			}
 			logger(navigator.standalone);
 			// logger(location);
 			console.log('ran');
