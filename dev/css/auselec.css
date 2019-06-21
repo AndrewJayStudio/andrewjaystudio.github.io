@@ -218,7 +218,6 @@ a {
 }
 
 .screen-header {
-	height: 90px;
 	background: white;
 	border-bottom: 1px solid #cad2dd;
 	display: flex;
@@ -226,10 +225,14 @@ a {
 }
 
 .hamberger {
-	height: 25px;
-	width: 25px;
+	height: 30px;
+	width: 30px;
 	background: #cad2dd;
-	margin: 25px;
+	margin: 15px;
+}
+
+h1.title {
+	font-size: 30px;
 }
 
 div.font {
