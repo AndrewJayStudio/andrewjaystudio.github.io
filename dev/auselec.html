@@ -50,7 +50,16 @@
 	</div>
 
 	<div class="display-screen">
-		<div class="display-order">
+		<div class="screen-order">
+			<div class="screen-header">
+				<div class="hamberger"></div>
+				<h1 class="title">Order Form</h1>
+			</div>
+			<div class="screen-box">
+				<div class="screen-content">
+
+				</div>
+			</div>
 			<button onclick="location.reload()">Reload</button>
 			<div class="font">Austin Electric, Inc.</div>
 			<form onsubmit="submitForm(event)">
@@ -89,7 +98,7 @@
 
 		window.onload = () => {
 			logger('0.1.0-armstrong-8');
-			if (navigator.standalone) {
+			if (navigator.standalone || true) {
 				if (typeof document.hidden !== "undefined") { // Opera 12.10 and Firefox 18 and later support
 					G.hidden = "hidden";
 					G.visibilityChange = "visibilitychange";
@@ -124,7 +133,6 @@
 
 			logger(navigator.standalone);
 			// logger(location);
-			console.log('ran');
 			NodeList.prototype.forEach = Array.prototype.forEach;
 			canvas = document.getElementById('sign');
 			signaturePad = new SignaturePad(canvas);

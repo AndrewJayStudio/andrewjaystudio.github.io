@@ -217,6 +217,21 @@ a {
 	}
 }
 
+.screen-header {
+	height: 90px;
+	background: white;
+	border-bottom: 1px solid #cad2dd;
+	display: flex;
+	align-items: center;
+}
+
+.hamberger {
+	height: 25px;
+	width: 25px;
+	background: #cad2dd;
+	margin: 25px;
+}
+
 div.font {
 	padding: 30px;
 	font-size: 60px;
