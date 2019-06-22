@@ -222,17 +222,49 @@ a {
 	border-bottom: 1px solid #cad2dd;
 	display: flex;
 	align-items: center;
+	justify-content: space-between;
+	font-family: Arial, Helvetica, sans-serif;
+	color: #5f6368;
 }
 
-.hamberger {
+.menu-button {
 	height: 30px;
 	width: 30px;
-	background: #cad2dd;
+	background:url(../images/menu-sprite.svg) 0 0;
+	background-size: 60px 30px; 
+	margin: 15px;
+}
+
+.comp-icon {
+	height: 60px;
+	width: 60px;
+	background:url(../images/austin-icon.svg) 0 0;
+	background-size: 60px 60px; 
 	margin: 15px;
 }
 
 h1.title {
 	font-size: 30px;
+}
+
+.reload-button {
+	height: 20px;
+	width: 20px;
+	background: url(../images/menu-sprite.svg) 30px 0;
+	background-size: 60px 20px;
+	margin: 25px;
+}
+
+.reload-button:active {
+	animation-name: reload;
+	animation-duration: 400ms;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+}
+
+@keyframes reload {
+	from {transform: rotate(0deg)}
+	to {transform: rotate(360deg)}
 }
 
 div.font {
