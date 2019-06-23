@@ -52,10 +52,10 @@
 	<div class="display-screen">
 		<div class="screen-order">
 			<div class="screen-header">
-				<div class="menu-button"></div>
+				<div class="menu-button" onclick="openMenu()"></div>
 				<div class="comp-icon"></div>
 				<h1 class="title">Order Form</h1>
-				<div class="reload-button"></div>
+				<div class="reload-button" tabindex="-1" onclick="toReload()"></div>
 			</div>
 			<div class="screen-box">
 				<div class="screen-content">
@@ -181,6 +181,11 @@
 				logger('No SW');
 			}
 		}
+		
+		function toReload() {
+		  setTimeout(()=>{location.reload()}, 400);
+		}
+		
 
 		function getFile() {
 			try {

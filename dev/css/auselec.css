@@ -66,8 +66,8 @@ a {
 #dev {
 	background: white;
 	position: fixed;
-	top: 0;
-	left: 0;
+	bottom: 0;
+	right: 0;
 	z-index: 1000000000;
 
 }
@@ -255,11 +255,12 @@ h1.title {
 	margin: 25px;
 }
 
-.reload-button:active {
+.reload-button:focus {
 	animation-name: reload;
 	animation-duration: 400ms;
 	animation-iteration-count: infinite;
 	animation-timing-function: linear;
+	outline: none;
 }
 
 @keyframes reload {
