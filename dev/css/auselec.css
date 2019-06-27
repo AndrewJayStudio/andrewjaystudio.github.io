@@ -217,6 +217,45 @@ a {
 	}
 }
 
+#screen-menu {
+	position: fixed;
+	height: 100vh;
+	width: 100%;
+	transition: 400ms;
+}
+
+.menu-close {
+	left: -100%;
+}
+
+.menu-open {
+	left: 0;
+}
+
+.menu-items {
+	width: 75%;
+	max-width: 500px;
+	height: 100%;
+	background: white;
+}
+
+.menu-back-dim {
+	background: rgba(0, 0, 0, 0.01);
+	top: 0;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	left: -100%;
+	z-index: -1;
+	transition: background 400ms linear, left 400ms step-end;
+}
+
+.menu-open .menu-back-dim {
+	background: rgba(0, 0, 0, 0.7);
+	left: 0;
+	transition: background 400ms linear, left 1ms step-end;
+}
+
 .screen-header {
 	background: white;
 	border-bottom: 1px solid #cad2dd;

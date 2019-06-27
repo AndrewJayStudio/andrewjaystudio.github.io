@@ -50,6 +50,22 @@
 	</div>
 
 	<div class="display-screen">
+		<div id="screen-menu" class="menu-close">
+			<div class="menu-items">
+				<ul>
+					<li>
+						New Order Form
+					</li>
+					<li>
+						Recent Orders
+					</li>
+					<li>
+						Settings
+					</li>
+				</ul>
+			</div>
+			<div class="menu-back-dim" onclick="closeMenu()"></div>
+		</div>
 		<div class="screen-order">
 			<div class="screen-header">
 				<div class="menu-button" onclick="openMenu()"></div>
@@ -59,7 +75,7 @@
 			</div>
 			<div class="screen-box">
 				<div class="screen-content">
-				    testing stuff
+					testing stuff
 				</div>
 			</div>
 			<button onclick="location.reload()">Reload</button>
@@ -181,11 +197,19 @@
 				logger('No SW');
 			}
 		}
-		
+
 		function toReload() {
-		  setTimeout(()=>{location.reload()}, 400);
+			setTimeout(() => { location.reload() }, 400);
 		}
-		
+
+		function openMenu() {
+			document.getElementById('screen-menu').classList.add('menu-open');
+		}
+
+		function closeMenu() {
+			document.getElementById('screen-menu').classList.remove('menu-open');
+		}
+
 
 		function getFile() {
 			try {
