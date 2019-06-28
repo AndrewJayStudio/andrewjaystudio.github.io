@@ -69,6 +69,7 @@ a {
 	bottom: 0;
 	right: 0;
 	z-index: 1000000000;
+	font-family: monospace;
 
 }
 
@@ -222,6 +223,8 @@ a {
 	height: 100vh;
 	width: 100%;
 	transition: 400ms;
+	font-family: Arial, Helvetica, sans-serif;
+	color: #5f6368;
 }
 
 .menu-close {
@@ -232,11 +235,40 @@ a {
 	left: 0;
 }
 
+.menu-head {
+	border-bottom: 1px solid #cad2dd;
+}
+
+.menu-head div.header-left {
+	justify-content: flex-start;
+}
+
+.menu-head div.comp-icon {
+	height: 50px;
+	width: 50px;
+	min-width: 50px;
+	background-size: 50px 50px; 
+}
+
+.menu-head h1.title {
+	font-size: 25px;
+}
+
 .menu-items {
 	width: 256px;
 	max-width: 75%;
 	height: 100%;
 	background: white;
+}
+
+.menu-items li {
+	 padding: 15px 0 15px 15px;
+	 border-radius: 0 500px 500px 0;
+	 margin: 5px 0 5px 0;
+}
+
+.menu-items li:hover {
+	background: #cad2dd;
 }
 
 .menu-back-dim {
@@ -264,6 +296,12 @@ a {
 	justify-content: space-between;
 	font-family: Arial, Helvetica, sans-serif;
 	color: #5f6368;
+}
+
+.header-left {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .menu-button {
