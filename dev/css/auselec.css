@@ -225,6 +225,7 @@ a {
 	transition: 400ms;
 	font-family: Arial, Helvetica, sans-serif;
 	color: #5f6368;
+	top: 0;
 }
 
 .menu-close {
@@ -310,6 +311,10 @@ a {
 	transition: background 400ms linear, left 1ms step-end;
 }
 
+.screen-order {
+	height: -webkit-fill-available;
+}
+
 .screen-header {
 	background: white;
 	border-bottom: 1px solid #cad2dd;
@@ -327,7 +332,7 @@ a {
 }
 
 .menu-button {
-	height: 30px;
+	height: 29px;
 	width: 30px;
 	min-width: 30px;
 	background:url(../images/menu-sprite.svg) 0 0;
@@ -369,6 +374,23 @@ h1.title {
 @keyframes reload {
 	from {transform: rotate(0deg)}
 	to {transform: rotate(360deg)}
+}
+
+#screen-box {
+	height: calc(100vh - 91px);
+}
+
+.page-recent-addbtn {
+	height: 80px;
+	width: 80px;
+	background-color: #06f;
+	background-image: url(../images/menu-add.svg);
+	background-position: -35px -14px;
+	background-size: 151px 216px;  
+	border-radius: 50%;
+	position: absolute;
+	bottom: 20px;
+	right: 20px;
 }
 
 div.font {

@@ -50,6 +50,34 @@
 	</div>
 
 	<div class="display-screen">
+		<div class="screen-order">
+			<div class="screen-header">
+				<div class="header-left">
+					<div class="menu-button" onclick="openMenu()"></div>
+					<div class="comp-icon"></div>
+					<h1 class="title">Order Form</h1>
+				</div>
+				<div class="reload-button" tabindex="-1" onclick="toReload()"></div>
+			</div>
+			<div id="screen-box">
+				<div class="screen-content">
+					<div class="page-neworder"></div>
+					<div class="page-recent">
+						<ul>
+							<li>No Recent Order Forms</li>
+						</ul>
+						<div class="page-recent-addbtn">
+						</div>
+					</div>
+					<div class="page-settings"></div>
+				</div>
+			</div>
+			<form style="display: none" onsubmit="submitForm(event)">
+				<input name="data" type="text">
+				<button type="submit">test</button>
+				<canvas id="sign"></canvas>
+			</form>
+		</div>
 		<div id="screen-menu" class="menu-close">
 			<div class="menu-items">
 				<div class="menu-head" onclick="closeMenu()">
@@ -74,28 +102,6 @@
 				</ul>
 			</div>
 			<div class="menu-back-dim" onclick="closeMenu()"></div>
-		</div>
-		<div class="screen-order">
-			<div class="screen-header">
-				<div class="header-left">
-					<div class="menu-button" onclick="openMenu()"></div>
-					<div class="comp-icon"></div>
-					<h1 class="title">Order Form</h1>
-				</div>
-				<div class="reload-button" tabindex="-1" onclick="toReload()"></div>
-			</div>
-			<div class="screen-box">
-				<div class="screen-content">
-					testing stuff
-				</div>
-			</div>
-			<button onclick="location.reload()">Reload</button>
-			<div class="font">Austin Electric, Inc.</div>
-			<form onsubmit="submitForm(event)">
-				<input name="data" type="text">
-				<button type="submit">test</button>
-				<canvas id="sign"></canvas>
-			</form>
 		</div>
 	</div>
 
