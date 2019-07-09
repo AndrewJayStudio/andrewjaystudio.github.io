@@ -54,6 +54,10 @@ a {
 
 	/** Main css **/
 
+	body {
+		overflow-x: hidden;
+	}
+
 	@font-face {
   font-family: 'Crimson Text';
   font-style: normal;
@@ -73,7 +77,7 @@ a {
 
 }
 
-	.container {
+.container {
   width: 95%;
   max-width: 1200px;
   margin: 0 auto;
@@ -385,6 +389,7 @@ h1.title {
 	position: relative;
 	display: flex;
 	transition: 0.3s;
+	max-height: calc(100vh - 91px);
 }
 
 #screen-content.page0 {
@@ -401,6 +406,7 @@ h1.title {
 
 .page {
 	width: 100vw;
+	overflow: auto;
 }
 
 .page-recent-addbtn {
@@ -421,7 +427,4 @@ div.font {
 	font-size: 60px;
 	font-family: 'Crimson Text', serif;
 	font-style: oblique;
-}
-.yo .wtheck {
-	width: 0px;
 }

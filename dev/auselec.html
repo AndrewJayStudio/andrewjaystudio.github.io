@@ -65,6 +65,76 @@
 					<div class="page page-recent">
 						<ul>
 							<li>No Recent Order Forms</li>
+							<li>stuff</li>
+							<li>stuff</li>
+							<li>stuff</li>
+							<li>stuff</li>
+							<li>stuff</li>
+							<li>stuff</li>
+							<li>stuff</li>
+							<li>stuff</li>
+							<li>stuff</li>
+							<li>stuff</li>
+							<li>stuff</li>
+							<li>stuff</li>
+							<li>stuff</li>
+							<li>stuff</li>
+							<li>stuff</li>
+							<li>stuff</li>
+							<li>stuff</li>
+							<li>stuff</li>
+							<li>stuff</li>
+							<li>stuff</li>
+							<li>stuff</li>
+							<li>stuff</li>
+							<li>stuff</li>
+							<li>stuff</li>
+							<li>stuff</li>
+							<li>stuff</li>
+							<li>stuff</li>
+							<li>stuff</li>
+							<li>stuff</li>
+							<li>stuff</li>
+							<li>stuff</li>
+							<li>stuff</li>
+							<li>stuff</li>
+							<li>stuff</li>
+							<li>stuff</li>
+							<li>stuff</li>
+							<li>stuff</li>
+							<li>stuff</li>
+							<li>stuff</li>
+							<li>stuff</li>
+							<li>stuff</li>
+							<li>stuff</li>
+							<li>stuff</li>
+							<li>stuff</li>
+							<li>stuff</li>
+							<li>stuff</li>
+							<li>stuff</li>
+							<li>stuff</li>
+							<li>stuff</li>
+							<li>stuff</li>
+							<li>stuff</li>
+							<li>stuff</li>
+							<li>stuff</li>
+							<li>stuff</li>
+							<li>stuff</li>
+							<li>stuff</li>
+							<li>stuff</li>
+							<li>stuff</li>
+							<li>stuff</li>
+							<li>stuff</li>
+							<li>stuff</li>
+							<li>stuff</li>
+							<li>stuff</li>
+							<li>stuff</li>
+							<li>stuff</li>
+							<li>stuff</li>
+							<li>stuff</li>
+							<li>stuff</li>
+							<li>stuff</li>
+							<li>stuff</li>
 						</ul>
 						<div class="page-recent-addbtn">
 						</div>
@@ -171,6 +241,8 @@
 			NodeList.prototype.forEach = Array.prototype.forEach;
 			canvas = document.getElementById('sign');
 			signaturePad = new SignaturePad(canvas);
+
+			document.getElementById('screen-content').addEventListener('touchstart', quickMenuStart);
 		}
 
 		function BuildApp() {
@@ -228,8 +300,14 @@
 		}
 
 		function goToPage(num) {
+
 			closeMenu();
 			document.getElementById('screen-content').className = `page${num}`;
+		}
+
+		function quickMenuStart(event) {
+			var touches = event.changedTouches;
+			//logger(touches);
 		}
 
 
