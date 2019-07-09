@@ -243,6 +243,8 @@
 			signaturePad = new SignaturePad(canvas);
 
 			document.getElementById('screen-content').addEventListener('touchstart', quickMenuStart);
+			document.getElementById('screen-content').addEventListener('touchmove', quickMenuMove);
+			document.getElementById('screen-content').addEventListener('touchend', quickMenuEnd);
 		}
 
 		function BuildApp() {
@@ -305,9 +307,42 @@
 			document.getElementById('screen-content').className = `page${num}`;
 		}
 
+		var contentTouch = {
+			move: []
+		};
+
 		function quickMenuStart(event) {
-			var touches = event.changedTouches;
-			//logger(touches);
+			contentTouch.start = event.touches[0].pageX;
+		}
+
+		function quickMenuMove(event) {
+			moved = event.touches[0].pageX;
+			if (document.getElementById('screen-content').style.left != '-100vw') {
+				left = -100;
+			}
+			else {
+				left = parseInt(document.getElementById('screen-content').style.left);
+			}
+			if (contentTouch.move.length == 0) {
+				from = contentTouch.start;
+			}
+			else {
+				from = contentTouch.move.pop();
+			}
+			moveTo = moved - contentTouch.start;
+			moveTo = -100 + moveTo;
+			moveTo = Math.max(moveTo, -200);
+			moveTo = Math.min(moveTo, 0);
+			console.log(moveTo);
+			document.getElementById('screen-content').style.left = `${moveTo}vw`;
+			contentTouch.move.push(moved);
+		}
+
+		function quickMenuEnd(event) {
+			console.log(contentTouch);
+			contentTouch = {
+				move: []
+			};
 		}
 
 
