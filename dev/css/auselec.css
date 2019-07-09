@@ -376,8 +376,31 @@ h1.title {
 	to {transform: rotate(360deg)}
 }
 
-#screen-box {
+.screen-box {
 	height: calc(100vh - 91px);
+}
+
+#screen-content {
+	width: 300vw;
+	position: relative;
+	display: flex;
+	transition: 0.3s;
+}
+
+#screen-content.page0 {
+	left: 0;
+}
+
+#screen-content.page1 {
+	left: -100vw;
+}
+
+#screen-content.page2 {
+	left: -200vw;
+}
+
+.page {
+	width: 100vw;
 }
 
 .page-recent-addbtn {
@@ -389,8 +412,8 @@ h1.title {
 	background-size: 151px 216px;  
 	border-radius: 50%;
 	position: absolute;
-	bottom: 20px;
-	right: 20px;
+	top: calc(100vh - 91px - 100px);
+	right: calc(100vw + 20px);
 }
 
 div.font {

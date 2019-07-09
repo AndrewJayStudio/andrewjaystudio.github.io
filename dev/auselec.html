@@ -59,17 +59,17 @@
 				</div>
 				<div class="reload-button" tabindex="-1" onclick="toReload()"></div>
 			</div>
-			<div id="screen-box">
-				<div class="screen-content">
-					<div class="page-neworder"></div>
-					<div class="page-recent">
+			<div class="screen-box">
+				<div id="screen-content" class="page1">
+					<div class="page page-neworder">new order</div>
+					<div class="page page-recent">
 						<ul>
 							<li>No Recent Order Forms</li>
 						</ul>
 						<div class="page-recent-addbtn">
 						</div>
 					</div>
-					<div class="page-settings"></div>
+					<div class="page page-settings">settings</div>
 				</div>
 			</div>
 			<form style="display: none" onsubmit="submitForm(event)">
@@ -87,15 +87,15 @@
 					</div>
 				</div>
 				<ul>
-					<li>
+					<li onclick="goToPage(0)">
 						<div class="mnu-btn-new"></div>
 						New Order Form
 					</li>
-					<li>
+					<li onclick="goToPage(1)">
 						<div class="mnu-btn-recent"></div>
 						Recent Orders
 					</li>
-					<li>
+					<li onclick="goToPage(2)">
 						<div class="mnu-btn-set"></div>
 						Settings
 					</li>
@@ -225,6 +225,11 @@
 
 		function closeMenu() {
 			document.getElementById('screen-menu').classList.remove('menu-open');
+		}
+
+		function goToPage(num) {
+			closeMenu();
+			document.getElementById('screen-content').className = `page${num}`;
 		}
 
 
