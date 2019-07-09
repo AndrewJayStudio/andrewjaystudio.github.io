@@ -302,47 +302,49 @@
 		}
 
 		function goToPage(num) {
-
+			console.log(num);
 			closeMenu();
 			document.getElementById('screen-content').className = `page${num}`;
 		}
 
 		var contentTouch = {
-			move: []
 		};
 
 		function quickMenuStart(event) {
-			contentTouch.start = event.touches[0].pageX;
+			contentTouch.start = true;
+			contentTouch.move = document.getElementById('screen-content').offsetLeft - event.touches[0].clientX;
 		}
 
 		function quickMenuMove(event) {
-			moved = event.touches[0].pageX;
-			if (document.getElementById('screen-content').style.left != '-100vw') {
-				left = -100;
+			document.getElementById('screen-content').style.transition = 'auto';
+			event.preventDefault();
+			if (contentTouch.start) {
+				contentTouch.pos = event.touches[0].clientX;
 			}
-			else {
-				left = parseInt(document.getElementById('screen-content').style.left);
-			}
-			if (contentTouch.move.length == 0) {
-				from = contentTouch.start;
-			}
-			else {
-				from = contentTouch.move.pop();
-			}
-			moveTo = moved - contentTouch.start;
-			moveTo = -100 + moveTo;
-			moveTo = Math.max(moveTo, -200);
-			moveTo = Math.min(moveTo, 0);
-			console.log(moveTo);
-			document.getElementById('screen-content').style.left = `${moveTo}vw`;
-			contentTouch.move.push(moved);
+			left = contentTouch.pos + contentTouch.move;
+			document.getElementById('screen-content').style.left = (left) + 'px';
 		}
 
 		function quickMenuEnd(event) {
+			document.getElementById('screen-content').style.transition = '';
 			console.log(contentTouch);
 			contentTouch = {
-				move: []
 			};
+			left = parseInt(document.getElementById('screen-content').style.left);
+			console.log(left);
+			if (left > (-0.5 * window.innerWidth)) {
+				console.log(0);
+				goToPage(0);
+			}
+			if ((-0.5 * window.innerWidth) > left && left > (-1.5 * window.innerWidth)) {
+				console.log(1);
+				goToPage(1);
+			}
+			if ((-1.5 * window.innerWidth) > left) {
+				console.log(2);
+				goToPage(2);
+			}
+			document.getElementById('screen-content').style.left = '';
 		}
 
 
