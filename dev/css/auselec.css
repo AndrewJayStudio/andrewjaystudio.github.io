@@ -60,9 +60,10 @@ html, body {
   overflow: auto;
 }
 
-/* body {
+body {
 		overflow-x: hidden;
-	} */
+		overflow-y: hidden;
+	}
 
 	@font-face {
   font-family: 'Crimson Text';
