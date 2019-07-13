@@ -242,7 +242,7 @@
 			canvas = document.getElementById('sign');
 			signaturePad = new SignaturePad(canvas);
 
-			document.body.addEventListener('touchmove', stopBodyOverscroll);
+			// document.body.addEventListener('touchmove', stopBodyOverscroll);
 
 			document.getElementById('screen-content').addEventListener('touchstart', quickMenuStart);
 			document.getElementById('screen-content').addEventListener('touchmove', quickMenuMove);
@@ -317,9 +317,9 @@
 			contentTouch.move = document.getElementById('screen-content').offsetLeft - event.touches[0].clientX;
 		}
 
-		function stopBodyOverscroll(event) {
-			event.preventDefault();
-		}
+		// function stopBodyOverscroll(event) {
+		// 	event.preventDefault();
+		// }
 
 		function quickMenuMove(event) {
 			document.getElementById('screen-content').style.transition = 'auto';
