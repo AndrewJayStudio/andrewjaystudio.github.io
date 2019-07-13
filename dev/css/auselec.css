@@ -425,6 +425,7 @@ h1.title {
 .page-recent {
 	overflow-y: scroll;
 	height: 100%;
+	overscroll-behavior: none;
 }
 
 .page-recent-addbtn {
