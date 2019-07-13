@@ -329,6 +329,7 @@ body {
 
 .screen-header {
 	position: fixed;
+	width: 100%;
 	background: white;
 	border-bottom: 1px solid #cad2dd;
 	display: flex;
@@ -417,6 +418,8 @@ h1.title {
 .page {
 	width: 100vw;
 	overflow: auto;
+	-webkit-overflow-scrolling: touch;
+	overscroll-behavior: none;
 }
 
 .page-recent-addbtn {
