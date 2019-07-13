@@ -271,6 +271,7 @@ body {
 	height: 100%;
 	background: white;
 	overflow: auto;
+	-webkit-overflow-scrolling: touch;
 }
 
 .menu-items li {
