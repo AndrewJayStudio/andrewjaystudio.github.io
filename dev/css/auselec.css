@@ -417,13 +417,14 @@ h1.title {
 
 .page {
 	width: 100vw;
-	overflow: none;
+	overflow: hidden;
 	/* -webkit-overflow-scrolling: touch; */
 	overscroll-behavior: none;
 }
 
 .page-recent {
 	overflow-y: scroll;
+	height: 100%;
 }
 
 .page-recent-addbtn {
