@@ -330,8 +330,11 @@
 				contentTouch.pos = event.touches[0].clientX;
 			}
 			left = contentTouch.pos + contentTouch.move;
-			if (Math.abs(contentTouch.startpos - contentTouch.pos) > 80) {
-				document.getElementById('screen-content').style.left = (left) + 'px'
+			if (Math.abs(contentTouch.startpos - contentTouch.pos) > 75) {
+				contentTouch.horiz = true;
+			}
+			if (contentTouch.horiz) {
+				document.getElementById('screen-content').style.left = (left) + 'px';
 			}
 		}
 
