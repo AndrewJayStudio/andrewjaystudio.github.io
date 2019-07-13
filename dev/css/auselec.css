@@ -326,6 +326,7 @@ body {
 }
 
 .screen-header {
+	position: fixed;
 	background: white;
 	border-bottom: 1px solid #cad2dd;
 	display: flex;
@@ -388,6 +389,7 @@ h1.title {
 
 .screen-box {
 	height: calc(100vh - 91px);
+	padding-top: 91px;
 }
 
 #screen-content {
