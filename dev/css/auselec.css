@@ -417,7 +417,7 @@ h1.title {
 
 .page {
 	width: 100vw;
-	overflow: auto;
+	overflow-y: scroll;
 	-webkit-overflow-scrolling: touch;
 	overscroll-behavior: none;
 }
