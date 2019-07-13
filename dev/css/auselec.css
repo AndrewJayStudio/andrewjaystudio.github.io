@@ -65,6 +65,11 @@ body {
 	overscroll-behavior: none;
 }
 
+.display-screen, .display-screen * {
+	overflow: hidden;
+	overscroll-behavior: none;
+}
+
 @font-face {
   font-family: 'Crimson Text';
   font-style: normal;
@@ -391,7 +396,7 @@ h1.title {
 }
 
 .screen-box {
-	height: calc(100vh - 91px);
+	/* height: calc(100vh - 91px); */
 	padding-top: 91px;
 }
 
