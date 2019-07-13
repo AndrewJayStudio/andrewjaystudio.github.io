@@ -57,17 +57,15 @@ a {
 html, body {
   height: 100%;
 	width: 100%;
-	touch-action: none;
 	overflow: hidden;
-	overscroll-behavior: none;
+	
 }
 
 body {
-		overflow-x: hidden;
-		overflow-y: hidden;
-	}
+	overscroll-behavior: none;
+}
 
-	@font-face {
+@font-face {
   font-family: 'Crimson Text';
   font-style: normal;
   font-weight: 700;
@@ -83,7 +81,6 @@ body {
 	right: 0;
 	z-index: 1000000000;
 	font-family: monospace;
-
 }
 
 .container {
