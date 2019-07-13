@@ -306,7 +306,6 @@
 		}
 
 		function goToPage(num) {
-			console.log(num);
 			closeMenu();
 			document.getElementById('screen-content').className = `page${num}`;
 		}
@@ -317,6 +316,7 @@
 		function quickMenuStart(event) {
 			contentTouch.start = true;
 			contentTouch.move = document.getElementById('screen-content').offsetLeft - event.touches[0].clientX;
+			contentTouch.startpos = event.touches[0].clientX;
 		}
 
 		// function stopBodyOverscroll(event) {
@@ -330,26 +330,23 @@
 				contentTouch.pos = event.touches[0].clientX;
 			}
 			left = contentTouch.pos + contentTouch.move;
-			document.getElementById('screen-content').style.left = (left) + 'px';
+			if (Math.abs(contentTouch.startpos - contentTouch.pos) > 80) {
+				document.getElementById('screen-content').style.left = (left) + 'px'
+			}
 		}
 
 		function quickMenuEnd(event) {
 			document.getElementById('screen-content').style.transition = '';
-			console.log(contentTouch);
 			contentTouch = {
 			};
 			left = parseInt(document.getElementById('screen-content').style.left);
-			console.log(left);
 			if (left > (-0.5 * window.innerWidth)) {
-				console.log(0);
 				goToPage(0);
 			}
 			if ((-0.5 * window.innerWidth) > left && left > (-1.5 * window.innerWidth)) {
-				console.log(1);
 				goToPage(1);
 			}
 			if ((-1.5 * window.innerWidth) > left) {
-				console.log(2);
 				goToPage(2);
 			}
 			document.getElementById('screen-content').style.left = '';
