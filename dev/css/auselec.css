@@ -62,15 +62,6 @@ html, body {
 	
 }
 
-body {
-	overscroll-behavior: none;
-}
-
-.display-screen, .display-screen * {
-	overflow: hidden;
-	overscroll-behavior: none;
-}
-
 @font-face {
   font-family: 'Crimson Text';
   font-style: normal;
