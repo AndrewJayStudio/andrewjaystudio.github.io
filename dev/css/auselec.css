@@ -325,6 +325,8 @@ html, body {
 }
 
 .screen-header {
+	top: 0px;
+	transition: 0.3s;
 	position: fixed;
 	width: 100%;
 	background: white;
@@ -390,6 +392,7 @@ h1.title {
 .screen-box {
 	/* height: calc(100vh - 91px); */
 	padding-top: 91px;
+	transition: 0.3s;
 }
 
 #screen-content {
@@ -416,6 +419,13 @@ h1.title {
 	width: 100vw;
 	overflow: hidden;
 	overscroll-behavior: none;
+}
+
+.page-neworder {
+	overflow-y: scroll;
+	height: 100%;
+	overscroll-behavior: none;
+	-webkit-overflow-scrolling: touch;
 }
 
 .page-recent {

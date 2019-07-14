@@ -61,7 +61,84 @@
 			</div>
 			<div class="screen-box">
 				<div id="screen-content" class="page1">
-					<div class="page page-neworder">new order</div>
+					<div class="page">
+						<div class="page-neworder">
+							new order
+							<ul>
+								<li>Order Form</li>
+								<li>stuff</li>
+								<li>stuff</li>
+								<li>stuff</li>
+								<li>stuff</li>
+								<li>stuff</li>
+								<li>stuff</li>
+								<li>stuff</li>
+								<li>stuff</li>
+								<li>stuff</li>
+								<li>stuff</li>
+								<li>stuff</li>
+								<li>stuff</li>
+								<li>stuff</li>
+								<li>stuff</li>
+								<li>stuff</li>
+								<li>stuff</li>
+								<li>stuff</li>
+								<li>stuff</li>
+								<li>stuff</li>
+								<li>stuff</li>
+								<li>stuff</li>
+								<li>stuff</li>
+								<li>stuff</li>
+								<li>stuff</li>
+								<li>stuff</li>
+								<li>stuff</li>
+								<li>stuff</li>
+								<li>stuff</li>
+								<li>stuff</li>
+								<li>stuff</li>
+								<li>stuff</li>
+								<li>stuff</li>
+								<li>stuff</li>
+								<li>stuff</li>
+								<li>stuff</li>
+								<li>stuff</li>
+								<li>stuff</li>
+								<li>stuff</li>
+								<li>stuff</li>
+								<li>stuff</li>
+								<li>stuff</li>
+								<li>stuff</li>
+								<li>stuff</li>
+								<li>stuff</li>
+								<li>stuff</li>
+								<li>stuff</li>
+								<li>stuff</li>
+								<li>stuff</li>
+								<li>stuff</li>
+								<li>stuff</li>
+								<li>stuff</li>
+								<li>stuff</li>
+								<li>stuff</li>
+								<li>stuff</li>
+								<li>stuff</li>
+								<li>stuff</li>
+								<li>stuff</li>
+								<li>stuff</li>
+								<li>stuff</li>
+								<li>stuff</li>
+								<li>stuff</li>
+								<li>stuff</li>
+								<li>stuff</li>
+								<li>stuff</li>
+								<li>stuff</li>
+								<li>stuff</li>
+								<li>stuff</li>
+								<li>stuff</li>
+								<li>stuff</li>
+								<li>stuff</li>
+							</ul>
+						</div>
+					</div>
 					<div class="page">
 						<div class="page-recent">
 							<ul>
@@ -187,6 +264,9 @@
 			'visibilitychange': ''
 		}
 
+		var contentTouch = {
+		};
+
 		if (typeof document.hidden !== "undefined") { // Opera 12.10 and Firefox 18 and later support
 			G.hidden = "hidden";
 			G.visibilityChange = "visibilitychange";
@@ -249,6 +329,14 @@
 			document.getElementById('screen-content').addEventListener('touchstart', quickMenuStart);
 			document.getElementById('screen-content').addEventListener('touchmove', quickMenuMove);
 			document.getElementById('screen-content').addEventListener('touchend', quickMenuEnd);
+			document.querySelector('.page-neworder').onscroll = () => {
+				if (document.querySelector('.page-neworder').scrollTop > 91) {
+					hideHeader(true);
+				}
+				else {
+					hideHeader(false);
+				}
+			};
 		}
 
 		function BuildApp() {
@@ -306,12 +394,10 @@
 		}
 
 		function goToPage(num) {
+			hideHeader(false);
 			closeMenu();
 			document.getElementById('screen-content').className = `page${num}`;
 		}
-
-		var contentTouch = {
-		};
 
 		function quickMenuStart(event) {
 			contentTouch.start = true;
@@ -353,6 +439,18 @@
 				goToPage(2);
 			}
 			document.getElementById('screen-content').style.left = '';
+		}
+
+		function hideHeader(t_f) {
+			if (t_f) {
+				console.log('idk');
+				document.querySelector('.screen-header').style.top = '-91px';
+				document.querySelector('.screen-box').style['padding-top'] = '0px';
+			}
+			else {
+				document.querySelector('.screen-header').style.top = '';
+				document.querySelector('.screen-box').style['padding-top'] = '';
+			}
 		}
 
 
