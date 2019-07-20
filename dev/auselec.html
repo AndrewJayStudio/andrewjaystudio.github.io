@@ -446,10 +446,12 @@
 				console.log('idk');
 				document.querySelector('.screen-header').style.top = '-91px';
 				document.querySelector('.screen-box').style['padding-top'] = '0px';
+				document.getElementById('screen-content').style['max-height'] = '100vh';
 			}
 			else {
 				document.querySelector('.screen-header').style.top = '';
 				document.querySelector('.screen-box').style['padding-top'] = '';
+				document.getElementById('screen-content').style['max-height'] = '';
 			}
 		}
 
