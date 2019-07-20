@@ -331,7 +331,7 @@
 			document.getElementById('screen-content').addEventListener('touchmove', quickMenuMove);
 			document.getElementById('screen-content').addEventListener('touchend', quickMenuEnd);
 			document.querySelector('.page-neworder').onscroll = () => {
-				if (document.querySelector('.page-neworder').scrollTop > 91) {
+				if (document.querySelector('.page-neworder').scrollTop > 91 && G.page == 0) {
 					hideHeader(true);
 				}
 				else {
@@ -395,6 +395,8 @@
 		}
 
 		function goToPage(num) {
+			G.page = num;
+			console.log('gotopage');
 			hideHeader(false);
 			closeMenu();
 			document.getElementById('screen-content').className = `page${num}`;
@@ -444,6 +446,7 @@
 		}
 
 		function hideHeader(t_f) {
+			console.log(t_f);
 			if (t_f) {
 				console.log('idk');
 				document.querySelector('.screen-header').style.top = '-91px';
