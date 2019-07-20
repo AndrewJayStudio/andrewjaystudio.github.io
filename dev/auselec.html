@@ -397,6 +397,7 @@
 			hideHeader(false);
 			closeMenu();
 			document.getElementById('screen-content').className = `page${num}`;
+			document.activeElement.blur();
 		}
 
 		function quickMenuStart(event) {
