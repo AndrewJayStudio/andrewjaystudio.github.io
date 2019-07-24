@@ -145,10 +145,6 @@ function isIosSafari() {
 	return yes;
 }
 
-function RegisterSW() {
-
-}
-
 function toReload() {
 	setTimeout(() => { location.reload() }, 400);
 }
