@@ -1,6 +1,6 @@
 // init constants
 
-auselec = {
+AJSOF = {
 	'hidden': '',
 	'page': 1,
 	'visibilityChange': '',
@@ -10,25 +10,25 @@ auselec = {
 
 // add site functions
 
-auselec.site.Init = (() => {
+AJSOF.site.Init = (() => {
 	if (typeof document.hidden !== "undefined") {
-		auselec.hidden = "hidden";
-		auselec.visibilityChange = "visibilitychange";
+		AJSOF.hidden = "hidden";
+		AJSOF.visibilityChange = "visibilitychange";
 	} else if (typeof document.msHidden !== "undefined") {
-		auselec.hidden = "msHidden";
-		auselec.visibilityChange = "msvisibilitychange";
+		AJSOF.hidden = "msHidden";
+		AJSOF.visibilityChange = "msvisibilitychange";
 	} else if (typeof document.webkitHidden !== "undefined") {
-		auselec.hidden = "webkitHidden";
-		auselec.visibilityChange = "webkitvisibilitychange";
+		AJSOF.hidden = "webkitHidden";
+		AJSOF.visibilityChange = "webkitvisibilitychange";
 	}
-	document.addEventListener(auselec.visibilityChange, () => {
-		if (!document[auselec.hidden]) {
+	document.addEventListener(AJSOF.visibilityChange, () => {
+		if (!document[AJSOF.hidden]) {
 			location.reload();
 		}
 	});
 });
 
-auselec.site.hideHeader = ((t_f) => {
+AJSOF.site.hideHeader = ((t_f) => {
 	if (t_f) {
 		document.querySelector('.screen-header').style.top = '-91px';
 		document.querySelector('.screen-box').style['padding-top'] = '0px';
@@ -43,25 +43,25 @@ auselec.site.hideHeader = ((t_f) => {
 
 // add load functions
 
-auselec.load.Build = (() => {
+AJSOF.load.Build = (() => {
 	return new Promise((resolve, reject) => {
-		auselec.load.ServiceWorker();
+		AJSOF.load.ServiceWorker();
 		document.getElementById('screen-content').addEventListener('touchstart', quickMenuStart);
 		document.getElementById('screen-content').addEventListener('touchmove', quickMenuMove);
 		document.getElementById('screen-content').addEventListener('touchend', quickMenuEnd);
 		document.querySelector('.page-neworder').onscroll = () => {
-			if (document.querySelector('.page-neworder').scrollTop > 91 && auselec.page == 0) {
-				auselec.site.hideHeader(true);
+			if (document.querySelector('.page-neworder').scrollTop > 91 && AJSOF.page == 0) {
+				AJSOF.site.hideHeader(true);
 			}
 			else {
-				auselec.site.hideHeader(false);
+				AJSOF.site.hideHeader(false);
 			}
 		};
 		resolve();
 	});
 });
 
-auselec.load.Deny = (() => {
+AJSOF.load.Deny = (() => {
 	document.getElementById('display-load').children[0].style['-webkit-filter'] = 'blur(10px)';
 	document.getElementById('display-install').style.display = 'block';
 	if (navigator.onLine && isIosSafari()) { }
@@ -74,9 +74,9 @@ auselec.load.Deny = (() => {
 	}
 });
 
-auselec.load.ServiceWorker = (() => {
+AJSOF.load.ServiceWorker = (() => {
 	if ('serviceWorker' in navigator) {
-		navigator.serviceWorker.register('/dev/auselec-sw.js').then((registration) => {
+		navigator.serviceWorker.register('/dev/AJSOF-sw.js').then((registration) => {
 			// Registration was successful
 			logger('SW Worked');
 			console.log('ServiceWorker registration successful with scope: ', registration.scope);
@@ -93,7 +93,7 @@ auselec.load.ServiceWorker = (() => {
 
 // init run
 
-auselec.site.Init();
+AJSOF.site.Init();
 
 var contentTouch = {
 };
@@ -102,12 +102,12 @@ var contentTouch = {
 
 window.onload = () => {
 	if (navigator.standalone || true) {
-		auselec.load.Build().then(() => {
+		AJSOF.load.Build().then(() => {
 			document.getElementById('display-load').classList.add('load-remove');
 		});
 	}
 	else {
-		auselec.load.Deny();
+		AJSOF.load.Deny();
 	}
 
 	logger(navigator.standalone);
@@ -158,8 +158,8 @@ function closeMenu() {
 }
 
 function goToPage(num) {
-	auselec.page = num;
-	auselec.site.hideHeader(false);
+	AJSOF.page = num;
+	AJSOF.site.hideHeader(false);
 	closeMenu();
 	document.getElementById('screen-content').className = `page${num}`;
 	document.activeElement.blur();
