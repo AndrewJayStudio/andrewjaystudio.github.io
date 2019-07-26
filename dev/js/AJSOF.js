@@ -1,248 +1,190 @@
 // init constants
 
 AJSOF = {
-	'hidden': '',
-	'page': 1,
-	'visibilityChange': '',
-	'site': {},
-	'load': {}
-}
 
-// add site functions
+	// add site functions
 
-AJSOF.site.Init = (() => {
-	if (typeof document.hidden !== "undefined") {
-		AJSOF.hidden = "hidden";
-		AJSOF.visibilityChange = "visibilitychange";
-	} else if (typeof document.msHidden !== "undefined") {
-		AJSOF.hidden = "msHidden";
-		AJSOF.visibilityChange = "msvisibilitychange";
-	} else if (typeof document.webkitHidden !== "undefined") {
-		AJSOF.hidden = "webkitHidden";
-		AJSOF.visibilityChange = "webkitvisibilitychange";
-	}
-	document.addEventListener(AJSOF.visibilityChange, () => {
-		if (!document[AJSOF.hidden]) {
-			location.reload();
-		}
-	});
-});
+	hidden: '',
+	visibilityChange: '',
+	site: {
+		Init: (() => {
+			if (typeof document.hidden !== "undefined") {
+				AJSOF.hidden = "hidden";
+				AJSOF.visibilityChange = "visibilitychange";
+			} else if (typeof document.msHidden !== "undefined") {
+				AJSOF.hidden = "msHidden";
+				AJSOF.visibilityChange = "msvisibilitychange";
+			} else if (typeof document.webkitHidden !== "undefined") {
+				AJSOF.hidden = "webkitHidden";
+				AJSOF.visibilityChange = "webkitvisibilitychange";
+			}
+			document.addEventListener(AJSOF.visibilityChange, () => {
+				if (!document[AJSOF.hidden]) {
+					location.reload();
+				}
+			});
+			window.onload = () => {
+				if (navigator.standalone || true) {
+					AJSOF.load.Build().then(() => {
+						document.getElementById('display-load').classList.add('load-remove');
+					});
+				}
+				else {
+					AJSOF.load.Deny();
+				}
 
-AJSOF.site.hideHeader = ((t_f) => {
-	if (t_f) {
-		document.querySelector('.screen-header').style.top = '-91px';
-		document.querySelector('.screen-box').style['padding-top'] = '0px';
-		document.getElementById('screen-content').style['max-height'] = '100vh';
-	}
-	else {
-		document.querySelector('.screen-header').style.top = '';
-		document.querySelector('.screen-box').style['padding-top'] = '';
-		document.getElementById('screen-content').style['max-height'] = '';
-	}
-});
-
-// add load functions
-
-AJSOF.load.Build = (() => {
-	return new Promise((resolve, reject) => {
-		AJSOF.load.ServiceWorker();
-		document.getElementById('screen-content').addEventListener('touchstart', quickMenuStart);
-		document.getElementById('screen-content').addEventListener('touchmove', quickMenuMove);
-		document.getElementById('screen-content').addEventListener('touchend', quickMenuEnd);
-		document.querySelector('.page-neworder').onscroll = () => {
-			if (document.querySelector('.page-neworder').scrollTop > 91 && AJSOF.page == 0) {
-				AJSOF.site.hideHeader(true);
+				logger(navigator.standalone);
+				// canvas = document.getElementById('sign');
+				// signaturePad = new SignaturePad(canvas);
+			};
+		}),
+		reload: (() => {
+			setTimeout(() => { location.reload() }, 400);
+		}),
+		page: {
+			index: 1,
+			go: ((num) => {
+				AJSOF.site.page.index = num;
+				AJSOF.site.hideHeader(false);
+				AJSOF.site.menu.close();
+				document.getElementById('screen-content').className = `page${num}`;
+				document.activeElement.blur();
+			})
+		},
+		safari: (() => {
+			nav = window.navigator;
+			logger(nav.userAgent);
+			yes = false;
+			['iPhone', 'iPad', 'iPod'].forEach((device) => {
+				isTrue = ('standalone' in nav
+					&& nav.userAgent.indexOf(device) != -1
+					&& nav.userAgent.indexOf('Mac OS') != -1
+					&& nav.userAgent.indexOf('Safari') != -1
+					&& nav.userAgent.indexOf('CriOS') == -1);
+				if (isTrue) {
+					yes = true;
+				}
+			});
+			logger(yes);
+			return yes;
+		}),
+		menu: {
+			open: (() => {
+				document.getElementById('screen-menu').classList.add('menu-open');
+			}),
+			close: (() => {
+				document.getElementById('screen-menu').classList.remove('menu-open');
+			})
+		},
+		quickMenu: {
+			content: {},
+			start: ((event) => {
+				AJSOF.site.quickMenu.content.start = true;
+				AJSOF.site.quickMenu.content.move = document.getElementById('screen-content').offsetLeft - event.touches[0].clientX;
+				AJSOF.site.quickMenu.content.startpos = event.touches[0].clientX;
+			}),
+			move: ((event) => {
+				document.getElementById('screen-content').style.transition = 'auto';
+				if (AJSOF.site.quickMenu.content.start) {
+					AJSOF.site.quickMenu.content.pos = event.touches[0].clientX;
+				}
+				left = AJSOF.site.quickMenu.content.pos + AJSOF.site.quickMenu.content.move;
+				if (Math.abs(AJSOF.site.quickMenu.content.startpos - AJSOF.site.quickMenu.content.pos) > 75) {
+					AJSOF.site.quickMenu.content.horiz = true;
+				}
+				if (AJSOF.site.quickMenu.content.horiz) {
+					document.getElementById('screen-content').style.left = (left) + 'px';
+				}
+			}),
+			end: ((event) => {
+				document.getElementById('screen-content').style.transition = '';
+				AJSOF.site.quickMenu.content = {
+				};
+				left = parseInt(document.getElementById('screen-content').style.left);
+				if (left > (-0.5 * window.innerWidth)) {
+					AJSOF.site.page.go(0);
+				}
+				if ((-0.5 * window.innerWidth) > left && left > (-1.5 * window.innerWidth)) {
+					AJSOF.site.page.go(1);
+				}
+				if ((-1.5 * window.innerWidth) > left) {
+					AJSOF.site.page.go(2);
+				}
+				document.getElementById('screen-content').style.left = '';
+			})
+		},
+		hideHeader: ((t_f) => {
+			if (t_f) {
+				document.querySelector('.screen-header').style.top = '-91px';
+				document.querySelector('.screen-box').style['padding-top'] = '0px';
+				document.getElementById('screen-content').style['max-height'] = '100vh';
 			}
 			else {
-				AJSOF.site.hideHeader(false);
+				document.querySelector('.screen-header').style.top = '';
+				document.querySelector('.screen-box').style['padding-top'] = '';
+				document.getElementById('screen-content').style['max-height'] = '';
 			}
-		};
-		resolve();
-	});
-});
+		})
+	},
 
-AJSOF.load.Deny = (() => {
-	document.getElementById('display-load').children[0].style['-webkit-filter'] = 'blur(10px)';
-	document.getElementById('display-install').style.display = 'block';
-	if (navigator.onLine && isIosSafari()) { }
-	else if (!navigator.onLine) {
-		console.log(navigator.onLine);
-		document.getElementById('display-install').firstElementChild.innerHTML = 'Please connect to the internet for an up-to-date and stable installation.';
-	}
-	else {
-		document.getElementById('display-install').firstElementChild.innerHTML = 'This App may not be compatible for your device.';
-	}
-});
+	// add load functions
 
-AJSOF.load.ServiceWorker = (() => {
-	if ('serviceWorker' in navigator) {
-		navigator.serviceWorker.register('/dev/service-worker-AJSOF.js').then((registration) => {
-			// Registration was successful
-			logger('SW Worked');
-			console.log('ServiceWorker registration successful with scope: ', registration.scope);
-		}, (err) => {
-			// registration failed :(
-			logger('SW err');
-			console.log('ServiceWorker registration failed: ', err);
-		});
+	load: {
+		Build: (() => {
+			return new Promise((resolve, reject) => {
+				AJSOF.load.ServiceWorker();
+				document.getElementById('screen-content').addEventListener('touchstart', AJSOF.site.quickMenu.start);
+				document.getElementById('screen-content').addEventListener('touchmove', AJSOF.site.quickMenu.move);
+				document.getElementById('screen-content').addEventListener('touchend', AJSOF.site.quickMenu.end);
+				document.querySelector('.page-neworder').onscroll = () => {
+					if (document.querySelector('.page-neworder').scrollTop > 91 && AJSOF.site.page.index == 0) {
+						AJSOF.site.hideHeader(true);
+					}
+					else {
+						AJSOF.site.hideHeader(false);
+					}
+				};
+				resolve();
+			});
+		}),
+		Deny: (() => {
+			document.getElementById('display-load').children[0].style['-webkit-filter'] = 'blur(10px)';
+			document.getElementById('display-install').style.display = 'block';
+			if (navigator.onLine && AJSOF.site.safari()) { }
+			else if (!navigator.onLine) {
+				console.log(navigator.onLine);
+				document.getElementById('display-install').firstElementChild.innerHTML = 'Please connect to the internet for an up-to-date and stable installation.';
+			}
+			else {
+				document.getElementById('display-install').firstElementChild.innerHTML = 'This App may not be compatible for your device.';
+			}
+		}),
+		ServiceWorker: (() => {
+			if ('serviceWorker' in navigator) {
+				navigator.serviceWorker.register('/dev/service-worker-AJSOF.js').then((registration) => {
+					// Registration was successful
+					logger('SW Worked');
+					console.log('ServiceWorker registration successful with scope: ', registration.scope);
+				}, (err) => {
+					// registration failed :(
+					logger('SW err');
+					console.log('ServiceWorker registration failed: ', err);
+				});
+			}
+			else {
+				logger('No SW');
+			}
+		})
 	}
-	else {
-		logger('No SW');
-	}
-});
+}
 
 // init run
 
 AJSOF.site.Init();
 
-var contentTouch = {
-};
-
-// load run
-
-window.onload = () => {
-	if (navigator.standalone || true) {
-		AJSOF.load.Build().then(() => {
-			document.getElementById('display-load').classList.add('load-remove');
-		});
-	}
-	else {
-		AJSOF.load.Deny();
-	}
-
-	logger(navigator.standalone);
-	// canvas = document.getElementById('sign');
-	// signaturePad = new SignaturePad(canvas);
-}
 
 
-
-
-
-
-
-
-
-
-
-
-
-function isIosSafari() {
-	nav = window.navigator;
-	logger(nav.userAgent);
-	yes = false;
-	['iPhone', 'iPad', 'iPod'].forEach((device) => {
-		isTrue = ('standalone' in nav
-			&& nav.userAgent.indexOf(device) != -1
-			&& nav.userAgent.indexOf('Mac OS') != -1
-			&& nav.userAgent.indexOf('Safari') != -1
-			&& nav.userAgent.indexOf('CriOS') == -1);
-		if (isTrue) {
-			yes = true;
-		}
-	});
-	logger(yes);
-	return yes;
-}
-
-function toReload() {
-	setTimeout(() => { location.reload() }, 400);
-}
-
-function openMenu() {
-	document.getElementById('screen-menu').classList.add('menu-open');
-}
-
-function closeMenu() {
-	document.getElementById('screen-menu').classList.remove('menu-open');
-}
-
-function goToPage(num) {
-	AJSOF.page = num;
-	AJSOF.site.hideHeader(false);
-	closeMenu();
-	document.getElementById('screen-content').className = `page${num}`;
-	document.activeElement.blur();
-}
-
-function quickMenuStart(event) {
-	contentTouch.start = true;
-	contentTouch.move = document.getElementById('screen-content').offsetLeft - event.touches[0].clientX;
-	contentTouch.startpos = event.touches[0].clientX;
-}
-
-function quickMenuMove(event) {
-	document.getElementById('screen-content').style.transition = 'auto';
-	if (contentTouch.start) {
-		contentTouch.pos = event.touches[0].clientX;
-	}
-	left = contentTouch.pos + contentTouch.move;
-	if (Math.abs(contentTouch.startpos - contentTouch.pos) > 75) {
-		contentTouch.horiz = true;
-	}
-	if (contentTouch.horiz) {
-		document.getElementById('screen-content').style.left = (left) + 'px';
-	}
-}
-
-function quickMenuEnd(event) {
-	document.getElementById('screen-content').style.transition = '';
-	contentTouch = {
-	};
-	left = parseInt(document.getElementById('screen-content').style.left);
-	if (left > (-0.5 * window.innerWidth)) {
-		goToPage(0);
-	}
-	if ((-0.5 * window.innerWidth) > left && left > (-1.5 * window.innerWidth)) {
-		goToPage(1);
-	}
-	if ((-1.5 * window.innerWidth) > left) {
-		goToPage(2);
-	}
-	document.getElementById('screen-content').style.left = '';
-}
-
-
-function getFile() {
-	try {
-		logger('ran');
-		data = document.getElementById('data');
-		logger(data.value);
-		data = data.value.split('');
-		logger(data);
-		data = data.map((letter) => {
-			return letter.charCodeAt(0);
-		});
-		logger(data);
-		data = data.join(' ');
-		logger(data);
-		a = window.btoa(data);
-		logger(a);
-		document.body.innerHTML = '';
-		document.body.innerText = 'AustinElectric/' + a;
-	}
-	catch (err) {
-		logger(err);
-	}
-}
-
-function submitForm(event) {
-	event.preventDefault();
-	event.target.childNodes.forEach((cur) => {
-		try {
-			if (!form_data) {
-				form_data = {};
-			}
-		}
-		catch (e) {
-			form_data = {};
-		}
-		if (cur.name) {
-			form_data[cur.name] = cur.value;
-		}
-	});
-	console.log(form_data);
-}
+// logger 
 
 function logger(log) {
 	log = JSON.stringify(log);

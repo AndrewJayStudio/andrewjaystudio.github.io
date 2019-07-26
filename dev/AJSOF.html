@@ -53,11 +53,11 @@
 		<div class="screen-order">
 			<div class="screen-header">
 				<div class="header-left">
-					<div class="menu-button" onclick="openMenu()"></div>
+					<div class="menu-button" onclick="AJSOF.site.menu.open()"></div>
 					<div class="comp-icon"></div>
 					<h1 class="title">Order Form</h1>
 				</div>
-				<div class="reload-button" tabindex="-1" onclick="toReload()"></div>
+				<div class="reload-button" tabindex="-1" onclick="AJSOF.site.reload()"></div>
 			</div>
 			<div class="screen-box">
 				<div id="screen-content" class="page1">
@@ -230,28 +230,28 @@
 		</div>
 		<div id="screen-menu" class="menu-close">
 			<div class="menu-items">
-				<div class="menu-head" onclick="closeMenu()">
+				<div class="menu-head" onclick="AJSOF.site.menu.close()">
 					<div class="header-left">
 						<div class="comp-icon"></div>
 						<h1 class="title">Order Form</h1>
 					</div>
 				</div>
 				<ul>
-					<li onclick="goToPage(0)">
+					<li onclick="AJSOF.site.page.go(0)">
 						<div class="mnu-btn-new"></div>
 						New Order Form
 					</li>
-					<li onclick="goToPage(1)">
+					<li onclick="AJSOF.site.page.go(1)">
 						<div class="mnu-btn-recent"></div>
 						Recent Orders
 					</li>
-					<li onclick="goToPage(2)">
+					<li onclick="AJSOF.site.page.go(2)">
 						<div class="mnu-btn-set"></div>
 						Settings
 					</li>
 				</ul>
 			</div>
-			<div class="menu-back-dim" onclick="closeMenu()"></div>
+			<div class="menu-back-dim" onclick="AJSOF.site.menu.close()"></div>
 		</div>
 	</div>
 
