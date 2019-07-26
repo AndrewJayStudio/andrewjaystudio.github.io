@@ -52,6 +52,7 @@ AJSOF = {
 			})
 		},
 		safari: (() => {
+			var nav, yes, isTrue;
 			nav = window.navigator;
 			logger(nav.userAgent);
 			yes = false;
@@ -84,31 +85,36 @@ AJSOF = {
 				AJSOF.site.quickMenu.content.startpos = event.touches[0].clientX;
 			}),
 			move: ((event) => {
+				var contLeft = AJSOF.site.quickMenu.content.left;
+				var contPos = AJSOF.site.quickMenu.content.pos;
+				var contHorz = AJSOF.site.quickMenu.content.horiz;
 				document.getElementById('screen-content').style.transition = 'auto';
 				if (AJSOF.site.quickMenu.content.start) {
-					AJSOF.site.quickMenu.content.pos = event.touches[0].clientX;
+					contPos = event.touches[0].clientX;
 				}
-				left = AJSOF.site.quickMenu.content.pos + AJSOF.site.quickMenu.content.move;
-				if (Math.abs(AJSOF.site.quickMenu.content.startpos - AJSOF.site.quickMenu.content.pos) > 75) {
-					AJSOF.site.quickMenu.content.horiz = true;
+				contLeft = contPos + AJSOF.site.quickMenu.content.move;
+				if (Math.abs(AJSOF.site.quickMenu.content.startpos - contPos) > 75) {
+					contHorz = true;
 				}
-				if (AJSOF.site.quickMenu.content.horiz) {
-					document.getElementById('screen-content').style.left = (left) + 'px';
+				if (contHorz) {
+					document.getElementById('screen-content').style.left = (contLeft) + 'px';
 				}
 			}),
 			end: ((event) => {
 				document.getElementById('screen-content').style.transition = '';
+				var contLeft = AJSOF.site.quickMenu.content.left;
+				var go = AJSOF.site.page.go;
 				AJSOF.site.quickMenu.content = {
 				};
-				left = parseInt(document.getElementById('screen-content').style.left);
-				if (left > (-0.5 * window.innerWidth)) {
-					AJSOF.site.page.go(0);
+				contLeft = parseInt(document.getElementById('screen-content').style.left);
+				if (contLeft > (-0.5 * window.innerWidth)) {
+					go(0);
 				}
-				if ((-0.5 * window.innerWidth) > left && left > (-1.5 * window.innerWidth)) {
-					AJSOF.site.page.go(1);
+				if ((-0.5 * window.innerWidth) > contLeft && contLeft > (-1.5 * window.innerWidth)) {
+					go(1);
 				}
-				if ((-1.5 * window.innerWidth) > left) {
-					AJSOF.site.page.go(2);
+				if ((-1.5 * window.innerWidth) > contLeft) {
+					go(2);
 				}
 				document.getElementById('screen-content').style.left = '';
 			})
