@@ -27,7 +27,7 @@ AJSOF = {
 			});
 			AJSOF.site.chrome = AJSOF.site.chrome();
 			window.onload = () => {
-				if (navigator.standalone) {
+				if (navigator.standalone || true) {
 					AJSOF.load.Build().then(() => {
 						document.getElementById('display-load').classList.add('load-remove');
 					});

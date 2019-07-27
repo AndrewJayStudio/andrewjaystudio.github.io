@@ -430,6 +430,14 @@ h1.title {
 	-webkit-overflow-scrolling: touch;
 }
 
+.order-form {
+	background: turquoise;
+}
+
+.order-form label, .order-form input {
+	display: block;
+}
+
 .page-recent {
 	overflow-y: scroll;
 	height: 100%;
