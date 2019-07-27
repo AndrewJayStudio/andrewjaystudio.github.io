@@ -25,6 +25,7 @@ AJSOF = {
 					location.reload();
 				}
 			});
+			AJSOF.site.chrome = AJSOF.site.chrome();
 			window.onload = () => {
 				if (navigator.standalone || true) {
 					AJSOF.load.Build().then(() => {
@@ -69,20 +70,23 @@ AJSOF = {
 		quickMenu: {
 			content: {},
 			start: ((event) => {
-				AJSOF.site.quickMenu.content.start = true;
-				AJSOF.site.quickMenu.content.move = document.getElementById('screen-content').offsetLeft - event.touches[0].clientX;
-				AJSOF.site.quickMenu.content.startpos = event.touches[0].clientX;
+				var cont = AJSOF.site.quickMenu.content;
+				var touch = event.touches[0];
+				cont.start = true;
+				cont.move = document.getElementById('screen-content').offsetLeft - touch.clientX;
+				cont.startpos = touch.clientX;
 			}),
 			move: ((event) => {
-				var contLeft = AJSOF.site.quickMenu.content.left;
-				var contPos = AJSOF.site.quickMenu.content.pos;
-				var contHorz = AJSOF.site.quickMenu.content.horiz;
+				var cont = AJSOF.site.quickMenu.content;
+				var contLeft = cont.left;
+				var contPos = cont.pos;
+				var contHorz = cont.horiz;
 				document.getElementById('screen-content').style.transition = 'auto';
-				if (AJSOF.site.quickMenu.content.start) {
+				if (cont.start) {
 					contPos = event.touches[0].clientX;
 				}
-				contLeft = contPos + AJSOF.site.quickMenu.content.move;
-				if (Math.abs(AJSOF.site.quickMenu.content.startpos - contPos) > 75) {
+				contLeft = contPos + cont.move;
+				if (Math.abs(cont.startpos - contPos) > 75) {
 					contHorz = true;
 				}
 				if (contHorz) {
@@ -91,18 +95,20 @@ AJSOF = {
 			}),
 			end: ((event) => {
 				document.getElementById('screen-content').style.transition = '';
-				var contLeft = AJSOF.site.quickMenu.content.left;
-				var go = AJSOF.site.page.go;
+				var site = AJSOF.site;
+				var contLeft = site.quickMenu.content.left;
+				var go = site.page.go;
+				var wit = window.innerWidth;
 				AJSOF.site.quickMenu.content = {
 				};
 				contLeft = parseInt(document.getElementById('screen-content').style.left);
-				if (contLeft > (-0.5 * window.innerWidth)) {
+				if (contLeft > (-0.5 * wit)) {
 					go(0);
 				}
-				if ((-0.5 * window.innerWidth) > contLeft && contLeft > (-1.5 * window.innerWidth)) {
+				if ((-0.5 * wit) > contLeft && contLeft > (-1.5 * wit)) {
 					go(1);
 				}
-				if ((-1.5 * window.innerWidth) > contLeft) {
+				if ((-1.5 * wit) > contLeft) {
 					go(2);
 				}
 				document.getElementById('screen-content').style.left = '';
@@ -127,27 +133,29 @@ AJSOF = {
 	load: {
 		Build: (() => {
 			return new Promise((resolve, reject) => {
+				var site = AJSOF.site;
 				AJSOF.load.ServiceWorker();
-				document.getElementById('screen-content').addEventListener('touchstart', AJSOF.site.quickMenu.start);
-				document.getElementById('screen-content').addEventListener('touchmove', AJSOF.site.quickMenu.move);
-				document.getElementById('screen-content').addEventListener('touchend', AJSOF.site.quickMenu.end);
+				document.getElementById('screen-content').addEventListener('touchstart', site.quickMenu.start);
+				document.getElementById('screen-content').addEventListener('touchmove', site.quickMenu.move);
+				document.getElementById('screen-content').addEventListener('touchend', site.quickMenu.end);
 				document.querySelector('.page-neworder').onscroll = () => {
 					if (document.querySelector('.page-neworder').scrollTop > 91 && AJSOF.site.page.index == 0) {
-						AJSOF.site.hideHeader(true);
+						site.hideHeader(true);
 					}
 					else {
-						AJSOF.site.hideHeader(false);
+						site.hideHeader(false);
 					}
 				};
 				resolve();
 			});
 		}),
 		Deny: (() => {
+			var nav = navigator.onLine;
 			document.getElementById('display-load').children[0].style['-webkit-filter'] = 'blur(10px)';
 			document.getElementById('display-install').style.display = 'block';
-			if (navigator.onLine && AJSOF.site.safari()) { }
-			else if (!navigator.onLine) {
-				console.log(navigator.onLine);
+			if (nav && AJSOF.site.safari()) { }
+			else if (!nav) {
+				console.log(nav);
 				document.getElementById('display-install').firstElementChild.innerHTML = 'Please connect to the internet for an up-to-date and stable installation.';
 			}
 			else {
