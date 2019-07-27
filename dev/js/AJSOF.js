@@ -27,7 +27,7 @@ AJSOF = {
 			});
 			AJSOF.site.chrome = AJSOF.site.chrome();
 			window.onload = () => {
-				if (navigator.standalone || true) {
+				if (navigator.standalone) {
 					AJSOF.load.Build().then(() => {
 						document.getElementById('display-load').classList.add('load-remove');
 					});
@@ -153,7 +153,7 @@ AJSOF = {
 			var nav = navigator.onLine;
 			document.getElementById('display-load').children[0].style['-webkit-filter'] = 'blur(10px)';
 			document.getElementById('display-install').style.display = 'block';
-			if (nav && AJSOF.site.safari()) { }
+			if (nav && AJSOF.site.safari) { }
 			else if (!nav) {
 				console.log(nav);
 				document.getElementById('display-install').firstElementChild.innerHTML = 'Please connect to the internet for an up-to-date and stable installation.';

@@ -121,6 +121,7 @@ html, body {
 }
 
 #display-install {
+	top: 0;
 	display: none;
 	background: rgba(0, 0, 0, 0.3);
 	position: fixed;
@@ -192,6 +193,7 @@ html, body {
 }
 
 #display-load {
+	top: 0;
 	background: white;
 	display: flex;
 	justify-content: center;
