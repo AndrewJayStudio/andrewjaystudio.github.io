@@ -8,18 +8,20 @@ AJSOF = {
 	visibilityChange: '',
 	site: {
 		Init: (() => {
+			var hid = AJSOF.hidden;
+			var vis = AJSOF.visibilityChange;
 			if (typeof document.hidden !== "undefined") {
-				AJSOF.hidden = "hidden";
-				AJSOF.visibilityChange = "visibilitychange";
+				hid = "hidden";
+				vis = "visibilitychange";
 			} else if (typeof document.msHidden !== "undefined") {
-				AJSOF.hidden = "msHidden";
-				AJSOF.visibilityChange = "msvisibilitychange";
+				hid = "msHidden";
+				vis = "msvisibilitychange";
 			} else if (typeof document.webkitHidden !== "undefined") {
-				AJSOF.hidden = "webkitHidden";
-				AJSOF.visibilityChange = "webkitvisibilitychange";
+				hid = "webkitHidden";
+				vis = "webkitvisibilitychange";
 			}
-			document.addEventListener(AJSOF.visibilityChange, () => {
-				if (!document[AJSOF.hidden]) {
+			document.addEventListener(vis, () => {
+				if (!document[hid]) {
 					location.reload();
 				}
 			});
@@ -44,31 +46,18 @@ AJSOF = {
 		page: {
 			index: 1,
 			go: ((num) => {
-				AJSOF.site.page.index = num;
-				AJSOF.site.hideHeader(false);
-				AJSOF.site.menu.close();
+				var site = AJSOF.site;
+				site.page.index = num;
+				site.hideHeader(false);
+				site.menu.close();
 				document.getElementById('screen-content').className = `page${num}`;
 				document.activeElement.blur();
 			})
 		},
-		safari: (() => {
-			var nav, yes, isTrue;
-			nav = window.navigator;
-			logger(nav.userAgent);
-			yes = false;
-			['iPhone', 'iPad', 'iPod'].forEach((device) => {
-				isTrue = ('standalone' in nav
-					&& nav.userAgent.indexOf(device) != -1
-					&& nav.userAgent.indexOf('Mac OS') != -1
-					&& nav.userAgent.indexOf('Safari') != -1
-					&& nav.userAgent.indexOf('CriOS') == -1);
-				if (isTrue) {
-					yes = true;
-				}
-			});
-			logger(yes);
-			return yes;
-		}),
+		safari: !!window.ApplePaySession,
+		opera: !!(window.opr && !!window.opr.addons),
+		firefox: !!window.InstallTrigger,
+		chrome: (() => { return (window.chrome && !AJSOF.site.opera) }),
 		menu: {
 			open: (() => {
 				document.getElementById('screen-menu').classList.add('menu-open');
