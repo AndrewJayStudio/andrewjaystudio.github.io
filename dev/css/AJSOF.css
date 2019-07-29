@@ -438,6 +438,7 @@ h1.title {
 	background: turquoise;
 	padding: 15px;
 	font-family: "Roboto";
+	min-height: 1000px;
 }
 
 .order-form section {
