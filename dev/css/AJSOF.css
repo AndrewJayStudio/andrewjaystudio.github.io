@@ -58,8 +58,12 @@ html, body {
   /* height: 100%; */
 	width: 100%;
 	overflow: hidden;
-	position: fixed;
-	
+	position: fixed;	
+}
+
+h2 {
+	font-size: 20px;
+	margin: 15px 0;
 }
 
 @font-face {
@@ -432,10 +436,22 @@ h1.title {
 
 .order-form {
 	background: turquoise;
+	padding: 15px;
+	font-family: "Roboto";
 }
 
-.order-form label, .order-form input {
+.order-form section {
+	padding-bottom: 15px;
+}
+
+.order-form label {
 	display: block;
+	margin: 5px 0 2px 0;
+}
+
+.order-form input {
+	display: block;
+	margin: 2px 0 10px 0;
 }
 
 .page-recent {
