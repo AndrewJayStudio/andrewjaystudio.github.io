@@ -46,16 +46,17 @@
 										Customer
 									</h2>
 									<label for="for">For</label>
-									<input autocomplete="disabled" type="text" name="for">
+									<input onblur="AJSOF.site.hideHeader(false)" onclick="AJSOF.site.view(this)" autocomplete="disabled" type="text" name="for">
 									<label for="order-by">Job Ordered By</label>
-									<input autocomplete="disabled" type="text" name="order-by">
+									<input onblur="AJSOF.site.hideHeader(false)" onclick="AJSOF.site.view(this)" autocomplete="disabled" type="text" name="order-by">
 									<label for="date">Date</label>
-									<input autocomplete="disabled" type="date" name="date" onblur="console.log(this)">
+									<input onblur="AJSOF.site.hideHeader(false)" onclick="AJSOF.site.view(this)" autocomplete="disabled" type="date" name="date"
+										onblur="console.log(this)">
 									<div class="form-squares">
 										<label for="job-no">Job Number</label>
-										<input autocomplete="disabled" type="number" name="job-no">
+										<input onblur="AJSOF.site.hideHeader(false)" onclick="AJSOF.site.view(this)" autocomplete="disabled" type="number" name="job-no">
 										<label for="cust-no">Customer Order Number</label>
-										<input autocomplete="disabled" type="number" name="cust-no">
+										<input onblur="AJSOF.site.hideHeader(false)" onclick="AJSOF.site.view(this)" autocomplete="disabled" type="number" name="cust-no">
 									</div>
 								</section>
 								<section>
@@ -63,9 +64,9 @@
 										Location
 									</h2>
 									<label for="address">Address</label>
-									<input autocomplete="disabled" type="text" name="address">
+									<input onblur="AJSOF.site.hideHeader(false)" onclick="AJSOF.site.view(this)" autocomplete="disabled" type="text" name="address">
 									<label for="city">City</label>
-									<input autocomplete="disabled" type="text" name="city">
+									<input onblur="AJSOF.site.hideHeader(false)" onclick="AJSOF.site.view(this)" autocomplete="disabled" type="text" name="city">
 									<label for="state">State</label>
 									<select name="state">
 										<option value="">-Select State-</option>
@@ -121,7 +122,7 @@
 										<option value="Wyoming">Wyoming</option>
 									</select>
 									<label for="zip">Zip Code</label>
-									<input autocomplete="disabled" type="number" name="zip">
+									<input onblur="AJSOF.site.hideHeader(false)" onclick="AJSOF.site.view(this)" autocomplete="disabled" type="number" name="zip">
 								</section>
 								<section>
 									<h2>
