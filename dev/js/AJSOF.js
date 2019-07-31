@@ -128,9 +128,16 @@ AJSOF = {
 			}
 		}),
 		view: ((focus) => {
-			console.log('view');
-			document.querySelector('.page-neworder').scrollTop = focus.previousElementSibling.offsetTop - 10;
-			AJSOF.site.hideHeader(true);
+			if (focus === 'blur') {
+				if (document.activeElement.tagName == 'BODY') {
+					AJSOF.site.hideHeader(false);
+				}
+			}
+			else {
+				console.log('view');
+				document.querySelector('.page-neworder').scrollTop = focus.previousElementSibling.offsetTop - 10;
+				AJSOF.site.hideHeader(true);
+			}
 		})
 	},
 
