@@ -456,12 +456,14 @@ h1.title {
 	margin: 2px 0 10px 0;
 }
 
-.order-form input, .order-form select {
+.order-form input, .order-form select, .order-form textarea {
 	outline: none;
 	border: none;
 	background: white;
 	width: 75%;
 	height: 35px;
+	font-family: Roboto;
+	font-size: 18px;
 }
 
 .page-recent {
