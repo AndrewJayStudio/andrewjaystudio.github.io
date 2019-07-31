@@ -139,7 +139,7 @@ AJSOF = {
 				document.getElementById('screen-content').addEventListener('touchmove', site.quickMenu.move);
 				document.getElementById('screen-content').addEventListener('touchend', site.quickMenu.end);
 				document.querySelector('.page-neworder').onscroll = () => {
-					if (document.querySelector('.page-neworder').scrollTop > 91 && AJSOF.site.page.index == 0) {
+					if (document.querySelector('.page-neworder').scrollTop > 91 && AJSOF.site.page.index == 0 || document.activeElement.tagName != 'BODY') {
 						site.hideHeader(true);
 					}
 					else {
