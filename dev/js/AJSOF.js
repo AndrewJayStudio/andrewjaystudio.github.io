@@ -128,6 +128,7 @@ AJSOF = {
 			}
 		}),
 		view: ((focus) => {
+			logger(focus);
 			if (focus === 'blur') {
 				if (document.activeElement.tagName == 'BODY') {
 					AJSOF.site.hideHeader(false);
