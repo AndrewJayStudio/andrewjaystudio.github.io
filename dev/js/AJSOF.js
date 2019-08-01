@@ -128,6 +128,8 @@ AJSOF = {
 			}
 		}),
 		view: ((focus) => {
+			window.scrollTo(0, 0);
+			document.body.scrollTop = 0;
 			if (focus === 'blur') {
 				if (document.activeElement.tagName == 'BODY') {
 					AJSOF.site.hideHeader(false);
