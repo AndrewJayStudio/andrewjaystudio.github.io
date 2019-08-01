@@ -39,8 +39,6 @@ AJSOF = {
 				logger(navigator.standalone);
 				// canvas = document.getElementById('sign');
 				// signaturePad = new SignaturePad(canvas);
-				cordova.plugins.Keyboard.disableScroll(true);
-
 			};
 		}),
 		reload: (() => {
@@ -136,6 +134,7 @@ AJSOF = {
 				}
 			}
 			else {
+				// document.querySelector('.page-neworder').scrollTop = focus.previousElementSibling.offsetTop - 10;
 				AJSOF.site.hideHeader(true);
 			}
 		})
