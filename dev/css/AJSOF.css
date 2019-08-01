@@ -433,6 +433,7 @@ h1.title {
 .page-neworder {
 	overflow-y: scroll;
 	scroll-behavior: smooth;
+	max-height: 100vh;
 	height: 100%;
 	overscroll-behavior: none;
 	-webkit-overflow-scrolling: touch;
