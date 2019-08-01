@@ -138,6 +138,7 @@ AJSOF = {
 			else {
 				// document.querySelector('.page-neworder').scrollTop = focus.previousElementSibling.offsetTop - 10;
 				AJSOF.site.hideHeader(true);
+				focus.focus();
 			}
 		})
 	},
