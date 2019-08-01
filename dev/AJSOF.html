@@ -46,17 +46,21 @@
 										Customer
 									</h2>
 									<label for="for">For</label>
-									<input onblur="AJSOF.site.view('blur')" onfocus="AJSOF.site.view(this)" autocomplete="disabled" type="text" name="for">
+									<input onblur="AJSOF.site.view('blur')" onfocus="AJSOF.site.view(this)" autocomplete="disabled"
+										type="text" name="for">
 									<label for="order-by">Job Ordered By</label>
-									<input onblur="AJSOF.site.view('blur')" onfocus="AJSOF.site.view(this)" autocomplete="disabled" type="text" name="order-by">
+									<input onblur="AJSOF.site.view('blur')" onfocus="AJSOF.site.view(this)" autocomplete="disabled"
+										type="text" name="order-by">
 									<label for="date">Date</label>
-									<input onblur="AJSOF.site.view('blur')" onfocus="AJSOF.site.view(this)" autocomplete="disabled" type="date" name="date"
-										onblur="console.log(this)">
+									<input onblur="AJSOF.site.view('blur')" onfocus="AJSOF.site.view(this)" autocomplete="disabled"
+										type="date" name="date" onblur="console.log(this)">
 									<div class="form-squares">
 										<label for="job-no">Job Number</label>
-										<input onblur="AJSOF.site.view('blur')" onfocus="AJSOF.site.view(this)" autocomplete="disabled" type="number" name="job-no">
+										<input onblur="AJSOF.site.view('blur')" onfocus="AJSOF.site.view(this)" autocomplete="disabled"
+											type="number" name="job-no" pattern="[0-9]*">
 										<label for="cust-no">Customer Order Number</label>
-										<input onblur="AJSOF.site.view('blur')" onfocus="AJSOF.site.view(this)" autocomplete="disabled" type="number" name="cust-no">
+										<input onblur="AJSOF.site.view('blur')" onfocus="AJSOF.site.view(this)" autocomplete="disabled"
+											type="number" name="cust-no" pattern="[0-9]*">
 									</div>
 								</section>
 								<section>
@@ -64,9 +68,11 @@
 										Location
 									</h2>
 									<label for="address">Address</label>
-									<input onblur="AJSOF.site.view('blur')" onfocus="AJSOF.site.view(this)" autocomplete="disabled" type="text" name="address">
+									<input onblur="AJSOF.site.view('blur')" onfocus="AJSOF.site.view(this)" autocomplete="disabled"
+										type="text" name="address">
 									<label for="city">City</label>
-									<input onblur="AJSOF.site.view('blur')" onfocus="AJSOF.site.view(this)" autocomplete="disabled" type="text" name="city">
+									<input onblur="AJSOF.site.view('blur')" onfocus="AJSOF.site.view(this)" autocomplete="disabled"
+										type="text" name="city">
 									<label for="state">State</label>
 									<select name="state">
 										<option value="">-Select State-</option>
@@ -122,13 +128,16 @@
 										<option value="Wyoming">Wyoming</option>
 									</select>
 									<label for="zip">Zip Code</label>
-									<input onblur="AJSOF.site.view('blur')" onfocus="AJSOF.site.view(this)" autocomplete="disabled" type="number" name="zip">
+									<input onblur="AJSOF.site.view('blur')" onfocus="AJSOF.site.view(this)" autocomplete="disabled"
+										type="number" name="zip" pattern="[0-9]*">
 								</section>
 								<section>
 									<h2>
 										Job Explanation
 									</h2>
-									<textarea name="explain" onblur="AJSOF.site.view('blur')" onfocus="AJSOF.site.view(this)" autocomplete="disabled" oninput="this.style.height = ''; this.style.height = this.scrollHeight + 3 + 'px'"></textarea>
+									<textarea name="explain" onblur="AJSOF.site.view('blur')" onfocus="AJSOF.site.view(this)"
+										autocomplete="disabled"
+										oninput="this.style.height = ''; this.style.height = this.scrollHeight + 3 + 'px'"></textarea>
 								</section>
 
 							</form>
