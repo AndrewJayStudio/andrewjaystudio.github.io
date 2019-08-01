@@ -47,20 +47,20 @@
 									</h2>
 									<label for="for">For</label>
 									<input onblur="AJSOF.site.view('blur')" onfocus="AJSOF.site.view(this)" autocomplete="disabled"
-										type="text" name="for">
+										type="text" name="for" placeholder="Organization">
 									<label for="order-by">Job Ordered By</label>
 									<input onblur="AJSOF.site.view('blur')" onfocus="AJSOF.site.view(this)" autocomplete="disabled"
-										type="text" name="order-by">
+										type="text" name="order-by" placeholder="Name">
 									<label for="date">Date</label>
 									<input onblur="AJSOF.site.view('blur')" onfocus="AJSOF.site.view(this)" autocomplete="disabled"
-										type="date" name="date" onblur="console.log(this)">
+										type="date" name="date" onblur="console.log(this)" placeholder="mm/dd/yyyy">
 									<div class="form-squares">
 										<label for="job-no">Job Number</label>
 										<input onblur="AJSOF.site.view('blur')" onfocus="AJSOF.site.view(this)" autocomplete="disabled"
-											type="number" name="job-no" pattern="[0-9]*">
+											type="number" name="job-no" pattern="[0-9]*" placeholder="#######">
 										<label for="cust-no">Customer Order Number</label>
 										<input onblur="AJSOF.site.view('blur')" onfocus="AJSOF.site.view(this)" autocomplete="disabled"
-											type="number" name="cust-no" pattern="[0-9]*">
+											type="number" name="cust-no" pattern="[0-9]*" placeholder="######">
 									</div>
 								</section>
 								<section>
@@ -69,10 +69,10 @@
 									</h2>
 									<label for="address">Address</label>
 									<input onblur="AJSOF.site.view('blur')" onfocus="AJSOF.site.view(this)" autocomplete="disabled"
-										type="text" name="address">
+										type="text" name="address" placeholder="Number & Street">
 									<label for="city">City</label>
 									<input onblur="AJSOF.site.view('blur')" onfocus="AJSOF.site.view(this)" autocomplete="disabled"
-										type="text" name="city">
+										type="text" name="city" placeholder="City">
 									<label for="state">State</label>
 									<select name="state">
 										<option value="">-Select State-</option>
@@ -129,7 +129,7 @@
 									</select>
 									<label for="zip">Zip Code</label>
 									<input onblur="AJSOF.site.view('blur')" onfocus="AJSOF.site.view(this)" autocomplete="disabled"
-										type="number" name="zip" pattern="[0-9]*">
+										type="number" name="zip" pattern="[0-9]*" placeholder="######">
 								</section>
 								<section>
 									<h2>
@@ -137,7 +137,7 @@
 									</h2>
 									<textarea name="explain" onblur="AJSOF.site.view('blur')" onfocus="AJSOF.site.view(this)"
 										autocomplete="disabled"
-										oninput="this.style.height = ''; this.style.height = this.scrollHeight + 3 + 'px'"></textarea>
+										oninput="this.style.height = ''; this.style.height = this.scrollHeight + 3 + 'px'" placeholder="Description:"></textarea>
 								</section>
 
 							</form>

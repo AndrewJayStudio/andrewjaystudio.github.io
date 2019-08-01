@@ -61,12 +61,13 @@ html, body {
 	width: 100%;
 	overflow: hidden;
 	position: fixed;	
-	background: red;
 }
 
 h2 {
 	font-size: 20px;
 	margin: 15px 0;
+	color: #5f6368;
+	font-weight: bold;
 }
 
 @font-face {
@@ -440,7 +441,6 @@ h1.title {
 }
 
 .order-form {
-	background: turquoise;
 	padding: 15px;
 	font-family: "Roboto";
 	min-height: calc(100vh + 100px);
@@ -453,11 +453,13 @@ h1.title {
 .order-form label {
 	display: block;
 	margin: 5px 0 2px 0;
+	color: #5f6368;
+	font-size: 16px;
 }
 
 .order-form input {
 	display: block;
-	margin: 2px 0 10px 0;
+	margin: 2px 0 20px 0;
 }
 
 .order-form input, .order-form select, .order-form textarea {
@@ -468,6 +470,8 @@ h1.title {
 	height: 35px;
 	font-family: Roboto;
 	font-size: 18px;
+	color: #5f6368;
+	border-bottom: 2px solid #cad2dd;
 }
 
 .page-recent {
