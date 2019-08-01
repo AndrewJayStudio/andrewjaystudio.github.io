@@ -39,7 +39,8 @@ AJSOF = {
 				logger(navigator.standalone);
 				// canvas = document.getElementById('sign');
 				// signaturePad = new SignaturePad(canvas);
-				window.plugins.keyboard.disableScroll(true);
+				cordova.plugins.Keyboard.disableScroll(true);
+
 			};
 		}),
 		reload: (() => {
