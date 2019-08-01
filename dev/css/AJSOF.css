@@ -497,3 +497,7 @@ div.font {
 	font-family: 'Crimson Text', serif;
 	font-style: oblique;
 }
+
+.fixstuff {
+	height: 55vh;
+}
