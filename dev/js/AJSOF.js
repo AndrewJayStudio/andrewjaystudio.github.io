@@ -197,6 +197,8 @@ AJSOF = {
 	form: {
 		descript: ((elm) => {
 			elm.style.height = elm.scrollHeight + 2 + 'px';
+			logger(elm.style.height);
+			logger(elm.scrollHeight);
 		}),
 		material: ((mat) => {
 			try {
