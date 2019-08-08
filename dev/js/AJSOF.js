@@ -195,6 +195,9 @@ AJSOF = {
 		})
 	},
 	form: {
+		descript: ((elm) => {
+			elm.style.height = elm.scrollHeight + 2 + 'px';
+		}),
 		material: ((mat) => {
 			try {
 				var materials = document.querySelectorAll('.form-table div').length;

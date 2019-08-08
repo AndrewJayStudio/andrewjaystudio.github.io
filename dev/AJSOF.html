@@ -140,9 +140,7 @@
 										Job Explanation
 									</h2>
 									<textarea name="explain" onblur="AJSOF.site.view('blur')" onfocus="AJSOF.site.view(this)"
-										autocomplete="disabled"
-										oninput="this.style.height = ''; this.style.height = this.scrollHeight + 3 + 'px'"
-										placeholder="Description:"></textarea>
+										autocomplete="disabled" oninput="AJSOF.form.descript(this)" placeholder="Description:"></textarea>
 								</section>
 								<section>
 									<h2>
