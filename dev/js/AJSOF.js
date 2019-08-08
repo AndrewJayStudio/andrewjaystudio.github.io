@@ -115,7 +115,6 @@ AJSOF = {
 			})
 		},
 		hideHeader: ((t_f) => {
-			console.log(t_f);
 			if (t_f) {
 				document.querySelector('.screen-header').style.top = '-91px';
 				document.querySelector('.screen-box').style['padding-top'] = '0px';
@@ -193,6 +192,37 @@ AJSOF = {
 			else {
 				logger('No SW');
 			}
+		})
+	},
+	form: {
+		material: ((mat) => {
+			try {
+				var materials = document.querySelectorAll('.form-table div').length;
+				var pos = mat.parentNode.nextElementSibling;
+				if (mat.value != '' && pos === null) {
+					var div = document.createElement('div');
+					var txtIn = document.querySelector('.form-table input[type=text]').cloneNode(true);
+					var numIn = document.querySelector('.form-table input[type=number]').cloneNode(true);
+					txtIn.value = '';
+					numIn.value = '';
+					txtIn.setAttribute('name', `materials-${materials}`);
+					numIn.setAttribute('name', `quantity-${materials}`);
+					div.appendChild(txtIn);
+					div.appendChild(numIn);
+					document.querySelector('.form-table').appendChild(div);
+				}
+				else if (mat.value == '' && pos.firstElementChild.value == '') {
+					if (pos.firstElementChild.nextElementSibling.value == '') {
+						pos.remove();
+					}
+				}
+				else if (mat.value == '' && pos.firstElementChild.value != '') {
+					if (mat.nextElementSibling.value == '') {
+						mat.parentElement.remove();
+					}
+				}
+			}
+			catch (e) { }
 		})
 	}
 }

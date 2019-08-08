@@ -55,15 +55,15 @@
 									<input onblur="AJSOF.site.view('blur')" onfocus="AJSOF.site.view(this)" autocomplete="disabled"
 										type="date" name="date" onblur="console.log(this)" placeholder="mm/dd/yyyy">
 									<div class="form-squares">
-									  <div>
-										  <label for="job-no">Job Number</label>
-										  <input onblur="AJSOF.site.view('blur')" onfocus="AJSOF.site.view(this)" autocomplete="disabled"
-											type="number" name="job-no" pattern="[0-9]*" placeholder="########">
+										<div>
+											<label for="job-no">Job Number</label>
+											<input onblur="AJSOF.site.view('blur')" onfocus="AJSOF.site.view(this)" autocomplete="disabled"
+												type="number" name="job-no" pattern="[0-9]*" placeholder="########">
 										</div>
 										<div>
-										  <label for="cust-no">Customer Order Number</label>
-										  <input onblur="AJSOF.site.view('blur')" onfocus="AJSOF.site.view(this)" autocomplete="disabled"
-											type="number" name="cust-no" pattern="[0-9]*" placeholder="########">
+											<label for="cust-no">Customer Order Number</label>
+											<input onblur="AJSOF.site.view('blur')" onfocus="AJSOF.site.view(this)" autocomplete="disabled"
+												type="number" name="cust-no" pattern="[0-9]*" placeholder="########">
 										</div>
 									</div>
 								</section>
@@ -141,7 +141,22 @@
 									</h2>
 									<textarea name="explain" onblur="AJSOF.site.view('blur')" onfocus="AJSOF.site.view(this)"
 										autocomplete="disabled"
-										oninput="this.style.height = ''; this.style.height = this.scrollHeight + 3 + 'px'" placeholder="Description:"></textarea>
+										oninput="this.style.height = ''; this.style.height = this.scrollHeight + 3 + 'px'"
+										placeholder="Description:"></textarea>
+								</section>
+								<section>
+									<h2>
+										Materials
+									</h2>
+									<div class="form-table">
+										<div>
+											<input onblur="AJSOF.site.view('blur')" onfocus="AJSOF.site.view(this)" autocomplete="disabled"
+												type="text" name="materials-0" placeholder="Material" oninput="AJSOF.form.material(this)">
+											<input onblur="AJSOF.site.view('blur')" onfocus="AJSOF.site.view(this)" autocomplete="disabled"
+												type="number" name="quantity-0" pattern="[0-9]*" placeholder="Quantity"
+												oninput="AJSOF.form.material(this.previousElementSibling)">
+										</div>
+									</div>
 								</section>
 
 							</form>

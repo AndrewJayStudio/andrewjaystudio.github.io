@@ -457,7 +457,7 @@ h1.title {
 	font-size: 16px;
 }
 
-.order-form input {
+.order-form input, .order-form select {
 	display: block;
 	margin: 2px 0 20px 0;
 }
@@ -492,6 +492,28 @@ h1.title {
 .form-squares div * {
   border: none;
   font-size: 14px;
+}
+
+.form-table div {
+	display: flex;
+}
+
+.form-table input[type=text] {
+	width: 50%;
+	margin-right: 5%;
+}
+
+.form-table input[type=number] {
+	width: 20%;
+}
+
+.add-mat {
+	width: 20px;
+	height: 20px;
+	background-size: 40px 60px;
+	margin-right: 15px;
+	background-image: url(../images/menu-sprite.svg);
+	background-position: 0 -20px;
 }
 
 .page-recent {
