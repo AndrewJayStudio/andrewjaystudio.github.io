@@ -479,6 +479,21 @@ h1.title {
 	border-bottom: 2px solid #4285f4;
 }
 
+.form-squares {
+  display: flex;
+}
+
+.form-squares div {
+  border: 1px solid #5f6368;
+  margin: 2px;
+  padding: 5px;
+}
+
+.form-squares div * {
+  border: none;
+  font-size: 14px;
+}
+
 .page-recent {
 	overflow-y: scroll;
 	height: 100%;
