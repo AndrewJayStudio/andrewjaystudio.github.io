@@ -247,3 +247,21 @@ function logger(log) {
 	document.getElementById('dev').appendChild(div);
 	document.getElementById('dev').style.display = 'block';
 }
+
+
+
+
+
+
+
+
+
+
+
+// .pad - dimensions {
+// 	position: relative;
+// 	width: 100vw;
+// 	height: calc((100vh - 100vw) / (3 / 2));
+// 	top: calc(50 % - (100vh - 100vw) / 3);
+// 	background: turquoise;
+// }

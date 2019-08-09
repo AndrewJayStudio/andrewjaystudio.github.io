@@ -54,7 +54,7 @@
 									<label for="date">Date</label>
 									<input onblur="AJSOF.site.view('blur')" onfocus="AJSOF.site.view(this)" autocomplete="disabled"
 										type="date" name="date" onblur="console.log(this)" placeholder="mm/dd/yyyy">
-									<div class="form-squares">
+									<div class="form-squares flex">
 										<div>
 											<label for="job-no">Job Number</label>
 											<input onblur="AJSOF.site.view('blur')" onfocus="AJSOF.site.view(this)" autocomplete="disabled"
@@ -154,6 +154,51 @@
 												type="number" name="quantity-0" pattern="[0-9]*" placeholder="Quantity"
 												oninput="AJSOF.form.material(this.previousElementSibling)">
 										</div>
+									</div>
+								</section>
+								<section>
+									<h2>
+										Labor
+									</h2>
+									<label for="hours">
+										Hours
+									</label>
+									<input type="number" name="hours" onblur="AJSOF.site.view('blur')" onfocus="AJSOF.site.view(this)"
+										autocomplete="disabled" pattern="[0-9]*" placeholder="Hours" />
+									<label for="travel">
+										Travel
+									</label>
+									<div class="form-travel flex">
+										<input type="number" name="travel" onblur="AJSOF.site.view('blur')" onfocus="AJSOF.site.view(this)"
+											autocomplete="disabled" pattern="[0-9]*" placeholder="Time or Mileage" />
+										<select name="travel-units">
+											<option value="Miles">Miles</option>
+											<option value="Hours">Hours</option>
+											<option value="Minutes">Minutes</option>
+										</select>
+									</div>
+									<label for="date-start">
+										Date Started
+									</label>
+									<input onblur="AJSOF.site.view('blur')" onfocus="AJSOF.site.view(this)" autocomplete="disabled"
+										type="date" name="date-start" placeholder="mm/dd/yyyy">
+									<label for="date-completed">
+										Date Completed
+									</label>
+									<input onblur="AJSOF.site.view('blur')" onfocus="AJSOF.site.view(this)" autocomplete="disabled"
+										type="date" name="date-completed" placeholder="mm/dd/yyyy">
+								</section>
+								<section>
+									<h2>
+										Agreement
+									</h2>
+									<label for="repairman">
+										Repairman
+									</label>
+									<input onblur="AJSOF.site.view('blur')" onfocus="AJSOF.site.view(this)" autocomplete="disabled"
+										type="text" name="repairman" placeholder="Name">
+									<div>
+										<input placeholder="Signature" onclick="console.log(this)" />
 									</div>
 								</section>
 
@@ -298,6 +343,12 @@
 				<div class="install-pointer">
 				</div>
 			</div>
+		</div>
+	</div>
+
+	<div id="display-sign-pad">
+		<div class="pad-dimensions">
+			<div class="line"></div>
 		</div>
 	</div>
 

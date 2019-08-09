@@ -479,10 +479,6 @@ h1.title {
 	border-bottom: 2px solid #4285f4;
 }
 
-.form-squares {
-  display: flex;
-}
-
 .form-squares div {
   border: 1px solid #5f6368;
   margin: 2px;
@@ -495,6 +491,10 @@ h1.title {
 }
 
 .form-table div {
+	display: flex;
+}
+
+.flex {
 	display: flex;
 }
 
@@ -516,6 +516,15 @@ h1.title {
 	background-position: 0 -20px;
 }
 
+.form-travel input {
+	width: 50%;
+	margin-right: 5%;
+}
+
+.form-travel select {
+	width: 20%;
+}
+
 .page-recent {
 	overflow-y: scroll;
 	height: 100%;
@@ -535,6 +544,38 @@ h1.title {
 	top: calc(100vh - 91px - 100px);
 	right: calc(100vw + 20px);
 	box-shadow: 1px 2px 7px #555;
+}
+
+#display-sign-pad {
+	position: fixed;
+	width: 100vw;
+	height: 100vh;
+	z-index: 100;
+	background: white;
+	top: 0;
+	left: 0;
+}
+
+.pad-dimensions {
+	width: 100%;
+	height: 100%;
+	background: turquoise;
+}
+
+.line {
+	position: relative;
+	top: 50%;
+	width: 75vw;
+	margin: 0 auto;
+	border-bottom: 2px solid white;
+}
+
+@media only screen and (orientation: portrait) {
+	.line {
+		transform: rotate(90deg);
+		width: 75vh;
+		left: calc((100vw - 75vh) / 2);
+	}
 }
 
 div.font {
