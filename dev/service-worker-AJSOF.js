@@ -1,9 +1,10 @@
-var CACHE_NAME = 'AJSOF-0.1.0-alpha-0';
+var CACHE_NAME = 'AJSOF-0.1.0-alpha-1';
 var urlsToCache = [
 	'/dev/AJSOF',
 	'/dev/css/AJSOF.css',
 	'/dev/css/fonts/crimson-text.woff2',
-	'/dev/images/logo-icon.svg'
+	'/dev/images/logo-icon.svg',
+	'/dev/js/AJSOF.js'
 ];
 
 self.addEventListener('install', function (event) {
@@ -18,7 +19,7 @@ self.addEventListener('install', function (event) {
 });
 
 self.addEventListener('fetch', function (event) {
-	event.respondWith(fromNetwork(event.request, 3000).catch(function () {
+	event.respondWith(fromNetwork(event.request, 10000).catch(function () {
 		return fromCache(event.request);
 	}));
 });
