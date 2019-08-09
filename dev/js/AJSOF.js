@@ -30,6 +30,15 @@ AJSOF = {
 				if (navigator.standalone || true) {
 					AJSOF.load.Build().then(() => {
 						document.getElementById('display-load').classList.add('load-remove');
+						var canvas = document.getElementById('sign')
+						var signaturePad = new SignaturePad(canvas);
+						canvas.width = window.innerWidth;
+						canvas.height = window.innerHeight;
+						// var ratio = Math.max(window.devicePixelRatio || 1, 1);
+						// canvas.width = canvas.offsetWidth * ratio;
+						// canvas.height = canvas.offsetHeight * ratio;
+						// canvas.getContext("2d").scale(ratio, ratio);
+						// signaturePad.clear();
 					});
 				}
 				else {

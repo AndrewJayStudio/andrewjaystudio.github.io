@@ -576,6 +576,13 @@ h1.title {
 	color: #4285f4;
 }
 
+#sign {
+	position: absolute;
+	top: 0;
+	left: 0;
+
+}
+
 @media only screen and (orientation: portrait) {
 	.pad-dimensions {
 		transform: rotate(90deg);
