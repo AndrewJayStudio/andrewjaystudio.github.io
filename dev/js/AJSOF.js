@@ -153,7 +153,7 @@ AJSOF = {
 				window.addEventListener('orientationchange', () => {
 					setTimeout(() => {
 						AJSOF.form.sign.start();
-					}, 50);
+					}, 100);
 				});
 				resolve();
 			});
@@ -278,3 +278,5 @@ function logger(log) {
 	document.getElementById('dev').appendChild(div);
 	document.getElementById('dev').style.display = 'block';
 }
+
+logger('v0');
