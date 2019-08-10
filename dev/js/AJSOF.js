@@ -237,7 +237,12 @@ AJSOF = {
 				}
 			}
 			catch (e) { }
-		})
+		}),
+		sign: {
+			init: (() => {
+
+			})
+		}
 	}
 }
 
@@ -259,7 +264,15 @@ function logger(log) {
 
 
 
-
+async function test() {
+	try {
+		await screen.orientation.lock('landscape');
+		logger('landscape lock');
+	}
+	catch (e) {
+		logger(e.message);
+	}
+}
 
 
 

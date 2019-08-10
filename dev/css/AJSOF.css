@@ -550,7 +550,6 @@ h1.title {
 	position: fixed;
 	width: 100vw;
 	height: 100vh;
-	
 	background: white;
 	top: 0;
 	left: 0;
@@ -581,6 +580,12 @@ h1.title {
 	top: 0;
 	left: 0;
 
+}
+
+#display-sign-pad button {
+	position: absolute;
+	top: 10px;
+	left: 10px;
 }
 
 @media only screen and (orientation: portrait) {
