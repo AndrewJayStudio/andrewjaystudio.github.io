@@ -30,15 +30,7 @@ AJSOF = {
 				if (navigator.standalone || true) {
 					AJSOF.load.Build().then(() => {
 						document.getElementById('display-load').classList.add('load-remove');
-						var canvas = document.getElementById('sign')
-						var signaturePad = new SignaturePad(canvas);
-						canvas.width = window.innerWidth;
-						canvas.height = window.innerHeight;
-						// var ratio = Math.max(window.devicePixelRatio || 1, 1);
-						// canvas.width = canvas.offsetWidth * ratio;
-						// canvas.height = canvas.offsetHeight * ratio;
-						// canvas.getContext("2d").scale(ratio, ratio);
-						// signaturePad.clear();
+
 					});
 				}
 				else {
@@ -46,8 +38,6 @@ AJSOF = {
 				}
 
 				logger(navigator.standalone);
-				// canvas = document.getElementById('sign');
-				// signaturePad = new SignaturePad(canvas);
 			};
 		}),
 		reload: (() => {
@@ -160,16 +150,11 @@ AJSOF = {
 				document.getElementById('screen-content').addEventListener('touchstart', site.quickMenu.start);
 				document.getElementById('screen-content').addEventListener('touchmove', site.quickMenu.move);
 				document.getElementById('screen-content').addEventListener('touchend', site.quickMenu.end);
-				document.querySelector('.page-neworder').onscroll = () => {
-					// if (document.querySelector('.page-neworder').scrollTop > 91 && AJSOF.site.page.index == 0) {
-					// 	site.hideHeader(true);
-					// }
-					// else {
-					// if (document.activeElement.tagName == 'BODY') {
-					// 	site.hideHeader(false);
-					// }
-					// }
-				};
+				window.addEventListener('orientationchange', () => {
+					setTimeout(() => {
+						AJSOF.form.sign.start();
+					}, 50);
+				});
 				resolve();
 			});
 		}),
@@ -239,9 +224,41 @@ AJSOF = {
 			catch (e) { }
 		}),
 		sign: {
-			init: (() => {
-
-			})
+			pad: undefined,
+			start: (() => {
+				var signaturePad;
+				var canvas = document.getElementById('sign');
+				if (AJSOF.form.sign.pad) {
+					signaturePad = AJSOF.form.sign.pad;
+					AJSOF.form.sign.stored.current = signaturePad.toData();
+					signaturePad.off();
+				}
+				signaturePad = new SignaturePad(canvas);
+				canvas.width = window.innerWidth;
+				canvas.height = window.innerHeight;
+				AJSOF.form.sign.pad = signaturePad;
+				var data = AJSOF.form.sign.stored.current;
+				if (data) {
+					data[0].forEach((point, index) => {
+						var x = point.x;
+						var y = point.y;
+						if (screen.orientation.type.indexOf('landscape') + 1) {
+							data[0][index].x = y;
+							data[0][index].y = window.innerHeight - x;
+						}
+						else {
+							data[0][index].x = window.innerWidth - y;
+							data[0][index].y = x;
+						}
+					});
+					signaturePad.fromData(data);
+				}
+			}),
+			stored: {
+				current: undefined,
+				undo: '',
+				redo: ''
+			}
 		}
 	}
 }
@@ -261,29 +278,3 @@ function logger(log) {
 	document.getElementById('dev').appendChild(div);
 	document.getElementById('dev').style.display = 'block';
 }
-
-
-
-async function test() {
-	try {
-		await screen.orientation.lock('landscape');
-		logger('landscape lock');
-	}
-	catch (e) {
-		logger(e.message);
-	}
-}
-
-
-
-
-
-
-
-// .pad - dimensions {
-// 	position: relative;
-// 	width: 100vw;
-// 	height: calc((100vh - 100vw) / (3 / 2));
-// 	top: calc(50 % - (100vh - 100vw) / 3);
-// 	background: turquoise;
-// }
