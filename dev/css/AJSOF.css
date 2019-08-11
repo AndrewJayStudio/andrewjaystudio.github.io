@@ -565,10 +565,10 @@ h1.title {
 }
 
 .sign-line {
-	position: relative;
-	top: 60%;
-	width: 90%;
-	margin: 0 auto;
+	position: absolute;
+	top: calc(100vh * 0.6);
+	width: calc( 100vw - ( (100vh * 0.05) * 2) );
+	margin: 0 calc(100vh * 0.05);
 	border-bottom: 2px solid #4285f4;
 	font-family: monospace;
 	font-size: 18px;
@@ -589,11 +589,10 @@ h1.title {
 }
 
 @media only screen and (orientation: portrait) {
-	.pad-dimensions {
-		transform: rotate(90deg);
-		min-width: 100vh;
-		height: 100vw;
-		left: calc((100vw - 100vh) / 2);
+	.sign-line {
+		top: calc(100vw * 0.6);
+		margin: 0 calc(100vw * 0.05);
+		width: calc( 100vw - ( (100vw * 0.05) * 2) );
 	}
 }
 
