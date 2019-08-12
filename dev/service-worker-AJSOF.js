@@ -40,6 +40,7 @@ function fromNetwork(request, timeout) {
 				reject;
 			}
 			var responseToCache = response.clone();
+			console.log('urlsToCache: ', urlsToCache);
 			caches.open(CACHE_NAME)
 				.then(function (cache) {
 					console.log('ServiceWorker updated ', responseToCache.url, ' to cache.');
