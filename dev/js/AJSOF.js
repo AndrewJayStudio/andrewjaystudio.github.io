@@ -170,7 +170,8 @@ AJSOF = {
 		ServiceWorker: (() => {
 			if ('serviceWorker' in navigator) {
 				navigator.serviceWorker.register('/dev/service-worker-AJSOF.js', {
-					updateViaCache: 'none'
+					updateViaCache: 'none',
+					Cache-Control: no-cache
 				}).then((registration) => {
 					// Registration was successful
 					logger('SW Worked');
@@ -265,7 +266,37 @@ function logger(log) {
 	document.getElementById('dev').style.display = 'block';
 }
 
-logger('v6');
+logger('v7');
+
+
+// var signaturePad;
+// var canvas = document.getElementById('sign');
+// if (AJSOF.form.sign.pad) {
+// 	signaturePad = AJSOF.form.sign.pad;
+// 	AJSOF.form.sign.stored.current = signaturePad.toData();
+// 	signaturePad.off();
+// }
+// signaturePad = new SignaturePad(canvas);
+// canvas.width = window.innerWidth;
+// canvas.height = window.innerHeight;
+// AJSOF.form.sign.pad = signaturePad;
+// var data = AJSOF.form.sign.stored.current;
+// if (data) {
+// 	data[0].forEach((point, index) => {
+// 		var x = point.x;
+// 		var y = point.y;
+// 		if (screen.orientation.type.indexOf('landscape') + 1) {
+// 			data[0][index].x = y;
+// 			data[0][index].y = window.innerHeight - x;
+// 		}
+// 		else {
+// 			data[0][index].x = window.innerWidth - y;
+// 			data[0][index].y = x;
+// 		}
+// 	});
+// 	signaturePad.fromData(data);
+// }
+
 
 
 // var signaturePad;
