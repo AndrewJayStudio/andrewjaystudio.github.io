@@ -172,9 +172,7 @@ AJSOF = {
 		}),
 		ServiceWorker: (() => {
 			if ('serviceWorker' in navigator) {
-				navigator.serviceWorker.register('/dev/service-worker-AJSOF.js', {
-					updateViaCache: 'none'
-				}).then((registration) => {
+				navigator.serviceWorker.register('/dev/service-worker-AJSOF.js').then((registration) => {
 					// Registration was successful
 					logger('SW Worked');
 					console.log('ServiceWorker registration successful with scope: ', registration.scope);
