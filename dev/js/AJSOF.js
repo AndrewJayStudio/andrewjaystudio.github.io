@@ -170,8 +170,7 @@ AJSOF = {
 		ServiceWorker: (() => {
 			if ('serviceWorker' in navigator) {
 				navigator.serviceWorker.register('/dev/service-worker-AJSOF.js', {
-					updateViaCache: 'none',
-					Cache-Control: no-cache
+					updateViaCache: 'none'
 				}).then((registration) => {
 					// Registration was successful
 					logger('SW Worked');
