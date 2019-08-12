@@ -36,15 +36,18 @@ function fromNetwork(request, timeout) {
 			var responseToCache = response.clone();
 			caches.open(CACHE_NAME)
 				.then(function (cache) {
+					console.log('ServiceWorker updated cache.');
 					cache.put(request, responseToCache);
 				});
 			clearTimeout(timeoutId);
+			console.log('ServiceWorker fetched from network.');
 			resolve(response);
 		}, reject);
 	});
 }
 
 function fromCache(request) {
+	console.log('ServiceWorker fetched from cache.');
 	return caches.open(CACHE_NAME).then(function (cache) {
 		return cache.match(request).then(function (response) {
 			return response || Promise.reject('no-match');
