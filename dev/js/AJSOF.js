@@ -27,7 +27,7 @@ AJSOF = {
 			});
 			AJSOF.site.chrome = AJSOF.site.chrome();
 			window.onload = () => {
-				// AJSOF.load.ServiceWorker();
+				// 
 				if (navigator.standalone || true) {
 					AJSOF.load.Build().then(() => {
 						document.getElementById('display-load').classList.add('load-remove');
@@ -150,7 +150,7 @@ AJSOF = {
 		Build: (() => {
 			return new Promise((resolve, reject) => {
 				var site = AJSOF.site;
-
+				AJSOF.load.ServiceWorker();
 				document.getElementById('screen-content').addEventListener('touchstart', site.quickMenu.start);
 				document.getElementById('screen-content').addEventListener('touchmove', site.quickMenu.move);
 				document.getElementById('screen-content').addEventListener('touchend', site.quickMenu.end);
@@ -172,6 +172,9 @@ AJSOF = {
 		}),
 		ServiceWorker: (() => {
 			if ('serviceWorker' in navigator) {
+				navigator.serviceWorker.addEventListener('message', (event) => {
+					console.log('From SW: ', event);
+				});
 				navigator.serviceWorker.register('/dev/service-worker-AJSOF.js').then((registration) => {
 					// Registration was successful
 					logger('SW Worked');
