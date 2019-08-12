@@ -266,7 +266,7 @@ function logger(log) {
 	document.getElementById('dev').style.display = 'block';
 }
 
-logger('v14');
+logger('v15');
 
 
 // var signaturePad;
