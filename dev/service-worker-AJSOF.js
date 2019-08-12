@@ -5,14 +5,10 @@ var urlsToCache = [
 	'/dev/js/AJSOF.js'
 ];
 
+var requestJS = new Request('https://andrewjaystudio.github.io/dev/js/AJSOF.js');
+
 var AJSOFjs = new FetchEvent('fetch', {
-	request: {
-		credentials: 'include',
-		destination: 'script',
-		method: 'GET',
-		mode: 'no-cors',
-		url: 'https://andrewjaystudio.github.io/dev/js/AJSOF.js'
-	}
+	request: requestJS
 });
 
 self.addEventListener('install', function (event) {
