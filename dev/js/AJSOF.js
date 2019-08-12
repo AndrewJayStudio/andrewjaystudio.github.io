@@ -150,7 +150,7 @@ AJSOF = {
 		Build: (() => {
 			return new Promise((resolve, reject) => {
 				var site = AJSOF.site;
-				
+
 				document.getElementById('screen-content').addEventListener('touchstart', site.quickMenu.start);
 				document.getElementById('screen-content').addEventListener('touchmove', site.quickMenu.move);
 				document.getElementById('screen-content').addEventListener('touchend', site.quickMenu.end);
@@ -268,7 +268,7 @@ function logger(log) {
 	document.getElementById('dev').style.display = 'block';
 }
 
-logger('v9');
+logger('v10');
 
 
 // var signaturePad;
