@@ -3,7 +3,6 @@ var CACHE_NAME = 'AJSOF-0.1.0-alpha-4';
 var urlsToCache = [
 	'/dev/AJSOF',
 	'/dev/css/AJSOF.css',
-	'/dev/images/logo-icon.svg',
 	'/dev/js/AJSOF.js'
 ];
 console.log('sw pre install');
@@ -22,7 +21,26 @@ self.addEventListener('install', function (event) {
 
 console.log('sw post install');
 
+self.addEventListener('activate', function (event) {
+	console.log('serviceWorver activating.');
+	var cacheWhitelist = [CACHE_NAME];
+	event.waitUntil(
+		caches.keys().then(function (cacheNames) {
+			return Promise.all(
+				cacheNames.map(function (cacheName) {
+					if (cacheWhitelist.indexOf(cacheName) === -1) {
+						return caches.delete(cacheName);
+					}
+				})
+			);
+		})
+	);
+});
+
+console.log('sw post activate');
+
 self.addEventListener('fetch', function (event) {
+	console.log('sw event: ', event);
 	console.log('ServiceWorker fetching ', event.request.url, '.');
 	event.respondWith(fromNetwork(event.request, 10000).catch(function () {
 		return fromCache(event.request);
@@ -64,22 +82,7 @@ function fromCache(request) {
 	});
 }
 
-console.log('sw post fromCache');
 
-self.addEventListener('activate', function (event) {
-	console.log('serviceWorver activating.');
-	var cacheWhitelist = [CACHE_NAME];
-	event.waitUntil(
-		caches.keys().then(function (cacheNames) {
-			return Promise.all(
-				cacheNames.map(function (cacheName) {
-					if (cacheWhitelist.indexOf(cacheName) === -1) {
-						return caches.delete(cacheName);
-					}
-				})
-			);
-		})
-	);
-});
+
 
 console.log('sw end');
