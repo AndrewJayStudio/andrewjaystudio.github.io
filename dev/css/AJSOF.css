@@ -564,6 +564,16 @@ h1.title {
 	background: white;
 }
 
+.pls-rotate {
+	position: relative;
+	top: 150vh;
+	margin: 0 auto;
+	font-family: 'Roboto';
+	font-size: 18px;
+	width: fit-content;
+	color: #5f6368;
+}
+
 .sign-line {
 	position: absolute;
 	top: calc(100vh * 0.6);
@@ -593,6 +603,10 @@ h1.title {
 		top: calc(100vw * 0.6);
 		margin: 0 calc(100vw * 0.05);
 		width: calc( 100vw - ( (100vw * 0.05) * 2) );
+	}
+
+	.pls-rotate {
+		top: 60vh;
 	}
 }
 

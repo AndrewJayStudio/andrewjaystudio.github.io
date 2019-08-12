@@ -222,26 +222,18 @@ AJSOF = {
 			pad: undefined,
 			start: (() => {
 				var canvas = document.getElementById('sign');
-				var pad = AJSOF.form.sign.pad;
-				if (pad) {
-					if (window.innerWidth / Window.innerHeight >= 1) {
-						//landscape
-
-					}
-				}
-				else {
-					AJSOF.form.sign.pad = new SignaturePad(canvas);
-					var padW = Math.min(window.innerHeight, window.innerWidth);
-					var padH = Math.max(window.innerHeight, window.innerWidth);
-					canvas.width = padH;
-					canvas.height = padH;
-					AJSOF.form.sign.stored.w = padW;
-					AJSOF.form.sign.stored.h = padH;
-				}
-
-
-				ctx = canvas.getContext('2d');
-
+				var padH = Math.max(window.innerHeight, window.innerWidth);
+				var pad = new SignaturePad(canvas, {
+					throttle: 20,
+					minDistance: 0,
+					penColor: '#303335',
+					onEnd: (() => {
+						AJSOF.form.sign.stored.undo = AJSOF.form.sign.pad.toData();
+					})
+				});
+				canvas.width = padH;
+				canvas.height = padH;
+				AJSOF.form.sign.pad = pad;
 			}),
 			stored: {
 				current: undefined,
