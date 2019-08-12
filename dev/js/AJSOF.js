@@ -262,7 +262,7 @@ function logger(log) {
 	document.getElementById('dev').style.display = 'block';
 }
 
-logger('v1');
+logger('v2');
 
 
 // var signaturePad;

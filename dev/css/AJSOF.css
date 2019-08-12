@@ -580,7 +580,7 @@ h1.title {
 	width: calc( 100vw - ( (100vh * 0.05) * 2) );
 	margin: 0 calc(100vh * 0.05);
 	border-bottom: 2px solid #4285f4;
-	font-family: monospace;
+	font-family: 'Lucida Console', 'Monaco', monospace;
 	font-size: 18px;
 	color: #4285f4;
 }
