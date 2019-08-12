@@ -40,7 +40,7 @@ self.addEventListener('activate', function (event) {
 console.log('sw post activate');
 
 self.addEventListener('fetch', function (event) {
-	console.log('sw event: ', event);
+	// console.log('sw event: ', event);
 	console.log('ServiceWorker fetching ', event.request.url, '.');
 	event.respondWith(fromNetwork(event.request, 10000).catch(function () {
 		return fromCache(event.request);
@@ -58,7 +58,7 @@ function fromNetwork(request, timeout) {
 				reject;
 			}
 			var responseToCache = response.clone();
-			console.log('urlsToCache: ', urlsToCache);
+			// console.log('urlsToCache: ', urlsToCache);
 			caches.open(CACHE_NAME)
 				.then(function (cache) {
 					console.log('ServiceWorker updated ', responseToCache.url, ' to cache.');
