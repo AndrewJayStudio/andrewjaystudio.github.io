@@ -19,7 +19,7 @@ self.addEventListener('install', function (event) {
 });
 
 self.addEventListener('fetch', function (event) {
-	console.log('ServiceWorker fetching.');
+	console.log('ServiceWorker fetching ', event.request.url, '.');
 	event.respondWith(fromNetwork(event.request, 10000).catch(function () {
 		return fromCache(event.request);
 	}));
@@ -36,18 +36,18 @@ function fromNetwork(request, timeout) {
 			var responseToCache = response.clone();
 			caches.open(CACHE_NAME)
 				.then(function (cache) {
-					console.log('ServiceWorker updated ', responseToCache, ' cache.');
+					console.log('ServiceWorker updated ', responseToCache.url, ' to cache.');
 					cache.put(request, responseToCache);
 				});
 			clearTimeout(timeoutId);
-			console.log('ServiceWorker fetched ', response, ' from network.');
+			console.log('ServiceWorker fetched ', response.url, ' from network.');
 			resolve(response);
 		}, reject);
 	});
 }
 
 function fromCache(request) {
-	console.log('ServiceWorker fetched ', request, ' from cache.');
+	console.log('ServiceWorker fetched ', request.url, ' from cache.');
 	return caches.open(CACHE_NAME).then(function (cache) {
 		return cache.match(request).then(function (response) {
 			return response || Promise.reject('no-match');
