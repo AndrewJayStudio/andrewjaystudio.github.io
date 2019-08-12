@@ -1,5 +1,5 @@
 console.log('sw top');
-var CACHE_NAME = 'AJSOF-0.1.0-alpha-4';
+var CACHE_NAME = 'AJSOF-0.1.0-alpha-5';
 var urlsToCache = [
 	'/dev/AJSOF',
 	'/dev/css/AJSOF.css',
