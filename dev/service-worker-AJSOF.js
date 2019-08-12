@@ -1,4 +1,4 @@
-var CACHE_NAME = 'AJSOF-0.1.0-alpha-2';
+var CACHE_NAME = 'AJSOF-0.1.0-alpha-3';
 var urlsToCache = [
 	'/dev/AJSOF',
 	'/dev/css/AJSOF.css',
@@ -12,7 +12,7 @@ self.addEventListener('install', function (event) {
 	event.waitUntil(
 		caches.open(CACHE_NAME)
 			.then(function (cache) {
-				console.log('Opened cache');
+				console.log('ServiceWorker opened ', CACHE_NAME, ' in cache');
 				return cache.addAll(urlsToCache);
 			})
 	);
@@ -36,18 +36,18 @@ function fromNetwork(request, timeout) {
 			var responseToCache = response.clone();
 			caches.open(CACHE_NAME)
 				.then(function (cache) {
-					console.log('ServiceWorker updated cache.');
+					console.log('ServiceWorker updated ', responseToCache, ' cache.');
 					cache.put(request, responseToCache);
 				});
 			clearTimeout(timeoutId);
-			console.log('ServiceWorker fetched from network.');
+			console.log('ServiceWorker fetched ', response, ' from network.');
 			resolve(response);
 		}, reject);
 	});
 }
 
 function fromCache(request) {
-	console.log('ServiceWorker fetched from cache.');
+	console.log('ServiceWorker fetched ', request, ' from cache.');
 	return caches.open(CACHE_NAME).then(function (cache) {
 		return cache.match(request).then(function (response) {
 			return response || Promise.reject('no-match');
