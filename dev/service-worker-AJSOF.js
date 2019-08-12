@@ -1,14 +1,14 @@
-var CACHE_NAME = 'AJSOF-0.1.0-alpha-1';
+var CACHE_NAME = 'AJSOF-0.1.0-alpha-2';
 var urlsToCache = [
 	'/dev/AJSOF',
 	'/dev/css/AJSOF.css',
-	'/dev/css/fonts/crimson-text.woff2',
 	'/dev/images/logo-icon.svg',
 	'/dev/js/AJSOF.js'
 ];
 
 self.addEventListener('install', function (event) {
 	// Perform install steps
+	console.log('ServiceWorker installing.');
 	event.waitUntil(
 		caches.open(CACHE_NAME)
 			.then(function (cache) {
@@ -19,6 +19,7 @@ self.addEventListener('install', function (event) {
 });
 
 self.addEventListener('fetch', function (event) {
+	console.log('ServiceWorker fetching.');
 	event.respondWith(fromNetwork(event.request, 10000).catch(function () {
 		return fromCache(event.request);
 	}));
@@ -52,6 +53,7 @@ function fromCache(request) {
 }
 
 self.addEventListener('activate', function (event) {
+	console.log('serviceWorver activating.');
 	var cacheWhitelist = [CACHE_NAME];
 	event.waitUntil(
 		caches.keys().then(function (cacheNames) {
