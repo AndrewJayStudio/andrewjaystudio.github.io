@@ -37,11 +37,15 @@ self.addEventListener('activate', function (event) {
 });
 
 self.addEventListener('fetch', function (event) {
+	SWFetch(event);
+});
+
+function SWFetch(event) {
 	console.log('sw: ', event);
 	event.respondWith(fromNetwork(event.request, 10000).catch(function () {
 		return fromCache(event.request);
 	}));
-});
+}
 
 function fromNetwork(request, timeout) {
 	return new Promise(function (resolve, reject) {
@@ -72,4 +76,5 @@ function fromCache(request) {
 
 self.addEventListener('message', (event) => {
 	console.log('From client: ', event);
+	SWFetch(AJSOFjs);
 });
