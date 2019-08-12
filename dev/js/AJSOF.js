@@ -32,9 +32,9 @@ AJSOF = {
 					AJSOF.load.Build().then(() => {
 						document.getElementById('display-load').classList.add('load-remove');
 						AJSOF.form.sign.start();
-						// fetch('js/AJSOF.js').then((response) => {
-						// 	console.log('fetch response: ', response);
-						// });
+						fetch('js/AJSOF.js').then((response) => {
+							console.log('fetch response: ', response);
+						});
 					});
 				}
 				else {
@@ -268,7 +268,7 @@ function logger(log) {
 	document.getElementById('dev').style.display = 'block';
 }
 
-logger('v8');
+logger('v9');
 
 
 // var signaturePad;
