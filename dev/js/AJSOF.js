@@ -32,6 +32,9 @@ AJSOF = {
 					AJSOF.load.Build().then(() => {
 						document.getElementById('display-load').classList.add('load-remove');
 						AJSOF.form.sign.start();
+						fetch('./AJSOF.js').then((response) => {
+							console.log('fetch response: ', response);
+						});
 					});
 				}
 				else {
