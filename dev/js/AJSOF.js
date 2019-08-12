@@ -271,6 +271,10 @@ function logger(log) {
 
 logger('v15');
 
+function test() {
+	navigator.serviceWorker.controller.postMessage('test');
+}
+
 
 // var signaturePad;
 // var canvas = document.getElementById('sign');

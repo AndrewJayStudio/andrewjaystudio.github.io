@@ -5,6 +5,16 @@ var urlsToCache = [
 	'/dev/js/AJSOF.js'
 ];
 
+var AJSOFjs = new FetchEvent('fetch', {
+	request: {
+		credentials: 'include',
+		destination: 'script',
+		method: 'GET',
+		mode: 'no-cors',
+		url: 'https://andrewjaystudio.github.io/dev/js/AJSOF.js'
+	}
+});
+
 self.addEventListener('install', function (event) {
 	// Perform install steps
 	event.waitUntil(
@@ -63,3 +73,7 @@ function fromCache(request) {
 		});
 	});
 }
+
+self.addEventListener('message', (event) => {
+	console.log('From client: ', event);
+});
