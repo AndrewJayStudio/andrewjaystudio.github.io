@@ -60,7 +60,9 @@ html, body {
 	max-height: 100vh;
 	width: 100%;
 	overflow: hidden;
-	position: fixed;	
+	position: fixed;
+	font-family: 'Roboto';
+	color: #5f6368;
 }
 
 h2 {
@@ -597,6 +599,43 @@ h1.title {
 	top: 10px;
 	left: 10px;
 }
+
+.signpad-opt {
+	background: turquoise;
+}
+
+.signpad-opt-btn {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 30px;
+	height: 30px;
+	background-size: 60px 90px;
+	margin: 15px;
+	background-image: url(../images/menu-sprite.svg);
+	background-position: 0 -30px;
+	background-color: white;
+	border-radius: 50%;
+}
+
+.signpad-opt-list {
+	display: none;
+	position: absolute;
+	top: 15px;
+	right: 60px;
+	background-color: white;
+	border: 1px solid #cad2dd;
+	border-radius: 5px;
+}
+
+.signpad-opt-list li {
+	padding: 0 5px;
+	margin: 10px 30px 10px 15px;
+	border-left: 2px solid #5f6368;
+	font-weight: bold;
+}
+
+
 
 @media only screen and (orientation: portrait) {
 	.sign-line {

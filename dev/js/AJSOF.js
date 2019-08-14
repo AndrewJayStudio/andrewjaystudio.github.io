@@ -248,6 +248,20 @@ AJSOF = {
 				redo: '',
 				w: undefined,
 				h: undefined
+			},
+			opt: {
+				tog: (() => {
+					document.querySelector('.signpad-opt-list').style.display = 'block';
+					AJSOF.form.sign.opt.tog = AJSOF.form.sign.opt.close;
+				}),
+				open: (() => {
+					document.querySelector('.signpad-opt-list').style.display = 'block';
+					AJSOF.form.sign.opt.tog = AJSOF.form.sign.opt.close;
+				}),
+				close: (() => {
+					document.querySelector('.signpad-opt-list').style.display = 'none';
+					AJSOF.form.sign.opt.tog = AJSOF.form.sign.opt.open;
+				})
 			}
 		}
 	}

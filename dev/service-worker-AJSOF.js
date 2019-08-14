@@ -41,7 +41,6 @@ self.addEventListener('fetch', function (event) {
 });
 
 function SWFetch(event) {
-	console.log('sw: ', event);
 	event.respondWith(fromNetwork(event.request, 10000).catch(function () {
 		return fromCache(event.request);
 	}));
