@@ -600,10 +600,6 @@ h1.title {
 	left: 10px;
 }
 
-.signpad-opt {
-	background: turquoise;
-}
-
 .signpad-opt-btn {
 	position: absolute;
 	top: 0;
@@ -620,6 +616,7 @@ h1.title {
 
 .signpad-opt-list {
 	display: none;
+	width: 80%;
 	position: absolute;
 	top: 15px;
 	right: 60px;
@@ -628,9 +625,13 @@ h1.title {
 	border-radius: 5px;
 }
 
+.signpad-opt-list ul {
+	display: flex;
+}
+
 .signpad-opt-list li {
 	padding: 0 5px;
-	margin: 10px 30px 10px 15px;
+	margin: 10px auto;
 	border-left: 2px solid #5f6368;
 	font-weight: bold;
 }
