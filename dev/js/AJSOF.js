@@ -301,9 +301,14 @@ AJSOF = {
 				}
 			}),
 			clear: (() => {
-				AJSOF.form.sign.stored.actions.push(false);
-				AJSOF.form.sign.stored.pos++;
-				AJSOF.form.sign.pad.clear();
+				if (!AJSOF.form.sign.pad.isEmpty()) {
+					AJSOF.form.sign.stored.actions.push(false);
+					AJSOF.form.sign.stored.pos++;
+					AJSOF.form.sign.pad.clear();
+				}
+				else {
+					AJSOF.form.sign.pad.clear();
+				}
 			})
 		}
 	}
