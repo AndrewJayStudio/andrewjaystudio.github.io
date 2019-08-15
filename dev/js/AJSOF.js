@@ -234,8 +234,18 @@ AJSOF = {
 					throttle: 20,
 					minDistance: 0,
 					penColor: '#303335',
+					onBegin: (() => {
+						document.querySelector('.signpad-opt').style.top = '-90px';
+						AJSOF.form.sign.opt.close();
+						if (AJSOF.form.sign.stored.pos < AJSOF.form.sign.stored.actions.length - 1) {
+							AJSOF.form.sign.stored.actions.splice(AJSOF.form.sign.stored.pos + 1);
+						}
+					}),
 					onEnd: (() => {
-						AJSOF.form.sign.stored.undo = AJSOF.form.sign.pad.toData();
+						var data = Array(...AJSOF.form.sign.pad.toData());
+						AJSOF.form.sign.stored.actions.push(data.pop());
+						AJSOF.form.sign.stored.pos++;
+						setTimeout(() => document.querySelector('.signpad-opt').style.top = '', 500);
 					})
 				});
 				canvas.width = padH;
@@ -243,26 +253,58 @@ AJSOF = {
 				AJSOF.form.sign.pad = pad;
 			}),
 			stored: {
-				current: undefined,
-				undo: '',
-				redo: '',
-				w: undefined,
-				h: undefined
+				actions: [false],
+				pos: 0
 			},
 			opt: {
 				tog: (() => {
-					document.querySelector('.signpad-opt-list').style.display = 'block';
+					document.querySelector('.signpad-opt-list').style.top = '15px';
 					AJSOF.form.sign.opt.tog = AJSOF.form.sign.opt.close;
 				}),
 				open: (() => {
-					document.querySelector('.signpad-opt-list').style.display = 'block';
+					document.querySelector('.signpad-opt-list').style.top = '15px';
 					AJSOF.form.sign.opt.tog = AJSOF.form.sign.opt.close;
 				}),
 				close: (() => {
-					document.querySelector('.signpad-opt-list').style.display = 'none';
+					document.querySelector('.signpad-opt-list').style.top = '';
 					AJSOF.form.sign.opt.tog = AJSOF.form.sign.opt.open;
 				})
-			}
+			},
+			action: (() => {
+				var pad = AJSOF.form.sign.pad;
+				var lastPos = AJSOF.form.sign.stored.pos;
+				var lastAct = AJSOF.form.sign.stored.actions[lastPos];
+				var current = [];
+				if (lastAct) {
+					while (lastAct) {
+						current.unshift(lastAct);
+						lastPos--;
+						lastAct = AJSOF.form.sign.stored.actions[lastPos];
+					}
+					pad.clear();
+					pad.fromData(current);
+				}
+				else {
+					pad.clear();
+				}
+			}),
+			undo: (() => {
+				if (AJSOF.form.sign.stored.pos > 0) {
+					AJSOF.form.sign.stored.pos--;
+					AJSOF.form.sign.action();
+				}
+			}),
+			redo: (() => {
+				if (AJSOF.form.sign.stored.pos < AJSOF.form.sign.stored.actions.length - 1) {
+					AJSOF.form.sign.stored.pos++;
+					AJSOF.form.sign.action();
+				}
+			}),
+			clear: (() => {
+				AJSOF.form.sign.stored.actions.push(false);
+				AJSOF.form.sign.stored.pos++;
+				AJSOF.form.sign.pad.clear();
+			})
 		}
 	}
 }
@@ -288,62 +330,3 @@ logger('v15');
 function test() {
 	navigator.serviceWorker.controller.postMessage('test');
 }
-
-
-// var signaturePad;
-// var canvas = document.getElementById('sign');
-// if (AJSOF.form.sign.pad) {
-// 	signaturePad = AJSOF.form.sign.pad;
-// 	AJSOF.form.sign.stored.current = signaturePad.toData();
-// 	signaturePad.off();
-// }
-// signaturePad = new SignaturePad(canvas);
-// canvas.width = window.innerWidth;
-// canvas.height = window.innerHeight;
-// AJSOF.form.sign.pad = signaturePad;
-// var data = AJSOF.form.sign.stored.current;
-// if (data) {
-// 	data[0].forEach((point, index) => {
-// 		var x = point.x;
-// 		var y = point.y;
-// 		if (screen.orientation.type.indexOf('landscape') + 1) {
-// 			data[0][index].x = y;
-// 			data[0][index].y = window.innerHeight - x;
-// 		}
-// 		else {
-// 			data[0][index].x = window.innerWidth - y;
-// 			data[0][index].y = x;
-// 		}
-// 	});
-// 	signaturePad.fromData(data);
-// }
-
-
-
-// var signaturePad;
-// var canvas = document.getElementById('sign');
-// if (AJSOF.form.sign.pad) {
-// 	signaturePad = AJSOF.form.sign.pad;
-// 	AJSOF.form.sign.stored.current = signaturePad.toData();
-// 	signaturePad.off();
-// }
-// signaturePad = new SignaturePad(canvas);
-// canvas.width = window.innerWidth;
-// canvas.height = window.innerHeight;
-// AJSOF.form.sign.pad = signaturePad;
-// var data = AJSOF.form.sign.stored.current;
-// if (data) {
-// 	data[0].forEach((point, index) => {
-// 		var x = point.x;
-// 		var y = point.y;
-// 		if (screen.orientation.type.indexOf('landscape') + 1) {
-// 			data[0][index].x = y;
-// 			data[0][index].y = window.innerHeight - x;
-// 		}
-// 		else {
-// 			data[0][index].x = window.innerWidth - y;
-// 			data[0][index].y = x;
-// 		}
-// 	});
-// 	signaturePad.fromData(data);
-// }
