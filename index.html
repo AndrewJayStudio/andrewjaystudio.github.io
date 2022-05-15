@@ -1,6 +1,19 @@
 <!DOCTYPE html>
 <html>
+
 <body>
-Hello World!
+	Hello World!
+	<script>
+		var ipc = require('electron').ipcRenderer;
+		ipc.once('actionReply', (event, response) => {
+			processResponse(response);
+		});
+		ipc.send('invokeAction', 'someData');
+		
+		function processResponse(response) {
+			console.log(response);
+		}
+	</script>
 </body>
+
 </html>
