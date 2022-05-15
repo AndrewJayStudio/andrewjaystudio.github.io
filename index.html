@@ -4,15 +4,20 @@
 <body>
 	Hello World!
 	<script>
-		var ipc = require('electron').ipcRenderer;
-		ipc.once('actionReply', (event, response) => {
-			processResponse(response);
-		});
-		ipc.send('invokeAction', 'someData');
-		
-		function processResponse(response) {
-			console.log(response);
+		try {
+			var ipc = require('electron').ipcRenderer;
+			ipc.once('actionReply', (event, response) => {
+				processResponse(response);
+			});
+			ipc.send('invokeAction', 'someData');
+
+			function processResponse(response) {
+				console.log(response);
+			}
+		} catch (e) {
+			console.log('Not in program window.');
 		}
+
 	</script>
 </body>
 
