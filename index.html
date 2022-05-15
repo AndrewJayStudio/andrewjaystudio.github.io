@@ -11,6 +11,8 @@
 			try {
 				ipc.once('actionReply', (event, response) => {
 					var q = url.parse(response, true);
+					console.log(response);
+					console.log(q);
 					console.log(q.query);
 				});
 				ipc.send('invokeAction', 'someData');
