@@ -4,6 +4,13 @@
 <body>
 	Hello World!
 	<script>
+		window.onload = () => {
+			var qString = location.search.substring(1);
+			console.log(qString);
+			var query = new URLSearchParams(qString);
+			console.log(query);
+		}
+
 		try {
 			var ipc = require('electron').ipcRenderer;
 			ipc.once('actionReply', (event, response) => {
